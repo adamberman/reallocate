@@ -4,7 +4,7 @@ window.Reallocate = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	new TVBnB.Routers.Router({$rootEl: $('#content')});
+  	new Reallocate.Routers.Router({$rootEl: $('#content')});
   	Backbone.history.start();
   }
 };

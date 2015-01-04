@@ -1,4 +1,4 @@
-TVBnB.Views.Main = Backbone.View.extend({
+Reallocate.Views.OpeningMain = Backbone.View.extend({
 
 	className: 'main',
 

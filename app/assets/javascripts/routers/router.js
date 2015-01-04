@@ -5,20 +5,21 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	},
 
 	routes: {
-		"": "main"
+		"": "main",
 		"login": "login",
 		"signup": "signup"
 	},
 
 	// first view the site will hit
 	main: function () {
-		var view = new TVBnB.Views.OpeningMain();
+		var view = new Reallocate.Views.OpeningMain();
 		this._swapView(view);
 	},
 
 	// view for login
 	login: function () {
-
+		var view = new Reallocate.Views.SignUp();
+		this._swapView(view);
 	},
 
 	// view for signup
