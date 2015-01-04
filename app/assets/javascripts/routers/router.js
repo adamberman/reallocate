@@ -11,7 +11,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	},
 
 	main: function () {
-
+		var view = new TVBnB.Views.OpeningMain();
+		this._swapView(view);
 	},
 
 	login: function () {
@@ -19,6 +20,15 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	},
 
 	signup: function () {
-		
+
+	},
+
+	_swapView: function (newView) {
+		if (this._currentView) {
+			this._currentView.remove();
+		}
+
+		this.$rootEl.html(newView.render().$el);
+		this._currentView = newView;
 	}
 })
