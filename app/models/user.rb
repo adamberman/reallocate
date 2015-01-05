@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :tasks, dependent: :destroy
+  has_many :requests, as: :requestable, dependent: :destroy
 
   attr_reader :password
   after_initialize :ensure_session_token
