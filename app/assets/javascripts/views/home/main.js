@@ -2,7 +2,7 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 
 	initialize: function () {
 		this.addIndex();
-		// add search
+		this.addSearch();
 	},
 
 	className: 'main',
@@ -15,6 +15,11 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 		});
 
 		this.addSubview('#index', index);
+	},
+
+	addSearch: function () {
+		var search = new Reallocate.Views.HomeSearch();
+		this.addSubview('#search', search);
 	},
 
 	render: function () {
