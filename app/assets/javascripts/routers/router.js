@@ -7,7 +7,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"": "main",
 		"login": "login",
-		"signup": "signup"
+		"signup": "signup",
+		"home": "home"
 	},
 
 	// first view the site will hit
@@ -25,6 +26,18 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	// view for signup
 	signup: function () {
 		var view = new Reallocate.Views.SignUp();
+		this._swapView(view);
+	},
+
+	// home page, which is also the search page for organizations, tasks, etc. For now, anyone can do everything, but eventually only logged in users will be able to do some things
+	home: function () {
+		var organizations = new Reallocate.Collections.Organizations();
+		organizations.fetch()
+
+		var view = new Reallocate.Views.SearchMain({
+			collection: organizations
+		});
+
 		this._swapView(view);
 	},
 

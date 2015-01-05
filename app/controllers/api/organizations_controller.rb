@@ -9,7 +9,7 @@ module Api
 		end
 
 		def index
-			@organizations = Listing.all
+			@organizations = Organization.all
 			render :index
 		end
 
