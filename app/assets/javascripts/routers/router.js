@@ -18,7 +18,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 	// view for login
 	login: function () {
-
+		var view = new Reallocate.Views.LogIn();
+		this._swapView(view);
 	},
 
 	// view for signup
