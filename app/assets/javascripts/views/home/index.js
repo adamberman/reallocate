@@ -1,7 +1,6 @@
 Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 
 	initialize: function () {
-		// eventually, search and filtering
 		this.listenTo(this.collection, 'search', this.search);
 		this.listenTo(this.collection, 'sync', this.addAll);
 		this.children = [];
@@ -34,8 +33,17 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 
 	search: function (id) {
 		this.deleteAll();
-		this._filteredOrganizations = this.collection.search(id);
+		if (id == '') {
+			this._filteredOrganizations = this.collection;
+		} else {
+			this._filteredOrganizations = this.collection.search(id);
+		}
 		this.renderFilteredOrganizations();
+	},
+
+	renderFilteredOrganizations: function () {
+		this._filteredOrganizations.each(this.addOrganization.bind(this));
+		this.render();
 	},
 
 	render: function () {

@@ -5,8 +5,9 @@ Reallocate.Collections.Organizations = Backbone.Collection.extend({
 	url: '/api/organizations',
 
 	search: function (id) {
-		return _(this.filter(function (model) {
-			return model.get('name').include?(id);
+		return _(this.filter(function(model) {
+			var name = model.get('name').split('');
+			return name.indexOf(id) !== -1;
 		}));
 	}
 })

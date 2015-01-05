@@ -12,10 +12,12 @@ Reallocate.Views.HomeSearch = Backbone.View.extend({
 		event.preventDefault();
 		var $button = $(event.currentTarget);
 		var id = $button.attr('id');
-		this.$('button').forEach(function (button) {
-			button.removeClass('btn-primary');
-			button.addClass('btn-default');
-		})
+		var $buttons = this.$('button')
+		for (var i = 0; i < $buttons.length; i++) {
+			var $currentButton = $($buttons[i]);
+			$currentButton.removeClass('btn-primary');
+			$currentButton.addClass('btn-default');
+		};
 		$button.removeClass('btn-default');
 		$button.addClass('btn-primary');
 		this.collection.trigger('search', id);

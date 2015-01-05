@@ -8,7 +8,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"": "main",
 		"login": "login",
 		"signup": "signup",
-		"home": "home"
+		"home": "home",
+		"home/organizations": "home"
 	},
 
 	// first view the site will hit
