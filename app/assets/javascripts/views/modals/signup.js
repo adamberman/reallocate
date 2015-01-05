@@ -1,7 +1,7 @@
 Reallocate.Views.SignUp = Backbone.CompositeView.extend({
 
 	events: { 
-		"submit #signup-form"
+		"submit #signup-form": "handleSignup"
 	},
 
 	template: JST['auth/signup-main'],
@@ -16,9 +16,11 @@ Reallocate.Views.SignUp = Backbone.CompositeView.extend({
 
 		user.save({}, {
 			success: function (model, resp) {
+				debugger;
 				that.loginCurrentUser(model.attributes);
 			},
 			error: function (model, resp) {
+				debugger;
 				that.addFlashErrors(resp.responseJSON);
 			}
 		});
@@ -29,11 +31,11 @@ Reallocate.Views.SignUp = Backbone.CompositeView.extend({
 	},
 
 	addFlashErrors: function (errors) {
-		var flashMessages = Reallocate.Views.Flash({
+		var flashMessages = new Reallocate.Views.Flash({
 			messages: errors,
 			flashClass: 'alert-danger'
 		})
-		this.$('#flash-message').html(flashMessageView.render().$el);
+		this.$('#flash-message').html(flashMessages.render().$el);
 		this.$('input[type=password]').val('');
 	},
 

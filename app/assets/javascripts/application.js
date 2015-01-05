@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
+//= require composite_view
 //= require reallocate
 //= require_tree ../templates
 //= require_tree ./models

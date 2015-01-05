@@ -18,13 +18,13 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 	// view for login
 	login: function () {
-		var view = new Reallocate.Views.SignUp();
-		this._swapView(view);
+
 	},
 
 	// view for signup
 	signup: function () {
-
+		var view = new Reallocate.Views.SignUp();
+		this._swapView(view);
 	},
 
 	// destroys old view, gets rid of zombie views (necessary for composite views)
