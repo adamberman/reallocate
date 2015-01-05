@@ -18,7 +18,7 @@ Reallocate.Views.Index = Backbone.CompositeView.extend({
 		});
 
 		this.children.push(subview);
-		this.addSubview('.organizations-container', subview);
+		this.addSubview('#organizations-container', subview);
 	},
 
 	render: function () {
