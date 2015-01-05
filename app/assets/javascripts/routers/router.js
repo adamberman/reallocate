@@ -34,7 +34,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		var organizations = new Reallocate.Collections.Organizations();
 		organizations.fetch()
 
-		var view = new Reallocate.Views.SearchMain({
+		var view = new Reallocate.Views.HomeMain({
 			collection: organizations
 		});
 
