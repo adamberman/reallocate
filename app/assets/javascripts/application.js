@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializejson.min
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require reallocate
 //= require_tree ../templates
 //= require_tree ./models
