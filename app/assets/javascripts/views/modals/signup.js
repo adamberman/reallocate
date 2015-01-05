@@ -16,11 +16,10 @@ Reallocate.Views.SignUp = Backbone.CompositeView.extend({
 
 		user.save({}, {
 			success: function (model, resp) {
-				debugger;
 				that.loginCurrentUser(model.attributes);
+				Backbone.history.navigate('/home', { trigger: true });
 			},
 			error: function (model, resp) {
-				debugger;
 				that.addFlashErrors(resp.responseJSON);
 			}
 		});
