@@ -1,13 +1,6 @@
-Reallocate.Collections.Organizations = Backbone.Collection.extend({
+Reallocate.Collections.Organizations = Reallocate.Collections.Searchable.extend({
 
 	model: Reallocate.Models.Organization,
 
-	url: '/api/organizations',
-
-	search: function (id) {
-		return _(this.filter(function(model) {
-			var name = model.get('name').split('');
-			return name.indexOf(id) !== -1;
-		}));
-	}
+	url: '/api/organizations'
 })
