@@ -1,6 +1,7 @@
 Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 
-	initialize: function () {
+	initialize: function (options) {
+		this._type = options.type;
 		this.listenTo(this.collection, 'search', this.search);
 		this.listenTo(this.collection, 'sync', this.addAll);
 		this.children = [];
@@ -12,15 +13,16 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 
 	addItem: function (item) {
 		var subview = new Reallocate.Views.IndexItem({
-			model: item
+			model: item,
+			type: this._type;
 		});
 
 		this.children.push(subview);
-		this.addSubview('#organizations-container', subview);
+		this.addSubview('#items-container', subview);
 	},
 
 	deleteItem: function (item) {
-		this.removeSubview('#organizations-container', item)
+		this.removeSubview('#items-container', item)
 		var index = this.children.indexOf(item);
 		this.children.slice(index, 1);
 	},

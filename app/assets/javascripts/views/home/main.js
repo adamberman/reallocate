@@ -12,7 +12,8 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 
 	addIndex: function () {
 		var index = new Reallocate.Views.HomeIndex({
-			collection: this.collection
+			collection: this.collection,
+			type: this._type
 		});
 
 		this.addSubview('#index', index);

@@ -1,11 +1,25 @@
 Reallocate.Views.IndexItem = Backbone.View.extend({
 
+	initialize: function (options) {
+		this._type = options.type;
+	},
+
 	className: 'index-item',
 
-	template: JST['home/index-item'],
+	organizationTemplate: JST['home/index-item'],
+
+	requestTemplate: JST['home/request-item'],
 
 	render: function () {
-		var content = this.template({
+		var template;
+		if (this._type === 'organization') {
+			template = this.organizationTemplate;
+		}
+		if (this._type === 'request') {
+			template = this.requestTemplate;
+		}
+
+		var content = template({
 			item: this.model
 		});
 
