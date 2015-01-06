@@ -18,6 +18,7 @@
 //= require backbone
 //= require bootstrap
 //= require composite_view
+//= require searchable
 //= require reallocate
 //= require_tree ../templates
 //= require_tree ./models

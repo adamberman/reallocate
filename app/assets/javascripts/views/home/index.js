@@ -14,7 +14,7 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 	addItem: function (item) {
 		var subview = new Reallocate.Views.IndexItem({
 			model: item,
-			type: this._type;
+			type: this._type
 		});
 
 		this.children.push(subview);
@@ -50,7 +50,7 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 	},
 
 	renderFilteredOrganizations: function () {
-		this.filteredList.each(this.addItem.bind(this));
+		this._filteredList.each(this.addItem.bind(this));
 		this.render();
 	},
 

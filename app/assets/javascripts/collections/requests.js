@@ -1,4 +1,4 @@
-Reallocate.Collections.Requests = Reallocate.Collections.Searchable.extend({
+Reallocate.Collections.Requests = Backbone.Searchable.extend({
 
 	model: Reallocate.Models.Request,
 

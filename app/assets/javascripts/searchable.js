@@ -1,4 +1,4 @@
-Reallocate.Collections.Searchable = Backbone.Collection.extend({
+Backbone.Searchable = Backbone.Collection.extend({
 	
 	search: function (id) {
 		return _(this.filter(function(model) {

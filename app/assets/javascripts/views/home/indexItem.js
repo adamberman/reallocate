@@ -6,7 +6,7 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 
 	className: 'index-item',
 
-	organizationTemplate: JST['home/index-item'],
+	organizationTemplate: JST['home/organization-item'],
 
 	requestTemplate: JST['home/request-item'],
 
@@ -20,7 +20,8 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 		}
 
 		var content = template({
-			item: this.model
+			item: this.model,
+			requestable: this.model.attributes.requestable
 		});
 
 		this.$el.html(content);

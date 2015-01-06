@@ -1,4 +1,4 @@
-Reallocate.Collections.Organizations = Reallocate.Collections.Searchable.extend({
+Reallocate.Collections.Organizations = Backbone.Searchable.extend({
 
 	model: Reallocate.Models.Organization,
 
