@@ -1,6 +1,7 @@
 Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 
-	initialize: function () {
+	initialize: function (options) {
+		this._type = options.type;
 		this.addIndex();
 		this.addSearch();
 	},

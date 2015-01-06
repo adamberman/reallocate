@@ -10,39 +10,45 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 
 	template: JST['home/index'],
 
-	addOrganization: function (organization) {
+	addItem: function (item) {
 		var subview = new Reallocate.Views.IndexItem({
-			model: organization
+			model: item
 		});
 
 		this.children.push(subview);
 		this.addSubview('#organizations-container', subview);
 	},
 
+	deleteItem: function (item) {
+		this.removeSubview('#organizations-container', item)
+		var index = this.children.indexOf(item);
+		this.children.slice(index, 1);
+	},
+
 	addAll: function () {
 		this.collection.each(function (item) {
-			this.addOrganization(item);
+			this.addItem(item);
 		}.bind(this));
 	},
 
 	deleteAll: function () {
 		this.children.forEach(function (item) {
-			this.removeSubview('#organizations-container', item)
+			this.deleteItem(item);
 		}.bind(this));
 	},
 
 	search: function (id) {
 		this.deleteAll();
 		if (id == '') {
-			this._filteredOrganizations = this.collection;
+			this._filteredList = this.collection;
 		} else {
-			this._filteredOrganizations = this.collection.search(id);
+			this._filteredList = this.collection.search(id);
 		}
 		this.renderFilteredOrganizations();
 	},
 
 	renderFilteredOrganizations: function () {
-		this._filteredOrganizations.each(this.addOrganization.bind(this));
+		this.filteredList.each(this.addItem.bind(this));
 		this.render();
 	},
 
