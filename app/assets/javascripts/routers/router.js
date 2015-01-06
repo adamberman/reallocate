@@ -9,7 +9,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"login": "login",
 		"signup": "signup",
 		"home": "home",
-		"home/organizations": "home"
+		"home/organizations": "home",
+		"home/requests": "requests"
 	},
 
 	// first view the site will hit
@@ -36,7 +37,20 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		organizations.fetch()
 
 		var view = new Reallocate.Views.HomeMain({
-			collection: organizations
+			collection: organizations,
+			type: 'organization'
+		});
+
+		this._swapView(view);
+	},
+
+	requests: function () {
+		var requests = new Reallocate.Collections.Requests();
+		requests.fetch();
+
+		var view = new Reallocate.Views.HomeMain({
+			collection: requests,
+			type: 'request'
 		});
 
 		this._swapView(view);
