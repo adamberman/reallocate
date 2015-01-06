@@ -1,11 +1,18 @@
 <div class="request-content">
-	<h4>
-		Request Title: <%= item.escape('name') %>
-	</h4>
-	<p>
-		Request Description: <%= item.escape('description') %>
-	</p>
-	<p>
-		Requester: <%= requestable.name %>
-	</p>
+	<div class="request-content-header">
+		<h4>
+			Request Title: <%= item.escape('name') %>
+		</h4>
+		<p>
+			Request Description: <%= item.escape('description') %>
+		</p>
+		<p>
+			Requester: <%= requestable.name %>
+		</p>
+	</div>
+	<div class="request-content-expander">
+		<p>About Me Information</p>
+		<p>Scope Information</p>
+		<p>Bids</p>
+	</div>
 </div>
