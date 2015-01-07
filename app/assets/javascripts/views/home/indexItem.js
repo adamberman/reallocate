@@ -5,7 +5,7 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 	},
 
 	events: {
-		'click .request-content-header': 'hideOrUnhide'
+		'click .request-content-main': 'hideOrUnhide'
 	},
 
 	className: 'index-item',
@@ -16,6 +16,7 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 
 	hideOrUnhide: function () {
 		this.$('.request-content-expander').toggleClass('hidden-container');
+		this.$('.request-content-header').toggleClass('hidden-container');
 	},
 
 	render: function () {
