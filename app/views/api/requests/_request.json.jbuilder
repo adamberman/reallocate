@@ -13,6 +13,4 @@ json.requestable do
 	end
 end
 
-json.bids do
-	bids = request.bids.where({ user: current_user })
-end
+json.bids json.partial! request.bids.where({ user: current_user }), partial: 'bid', as: :bid
