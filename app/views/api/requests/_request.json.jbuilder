@@ -13,4 +13,12 @@ json.requestable do
 	end
 end
 
-json.bids json.partial! request.bids.where({ user: current_user }), partial: 'bid', as: :bid
+
+json.bids do
+	json.array! request.relevent_bids do |bid|
+		json.content bid.content
+		json.user do
+		 json.partial! bid.user, partial: 'user', as: :user
+		end
+	end
+end
