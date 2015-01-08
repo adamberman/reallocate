@@ -12,3 +12,7 @@ json.requestable do
 		requestable = json.partial! request.requestable, partial: 'organization', as: :organization
 	end
 end
+
+json.bids do
+	bids = request.bids.where({ user: current_user })
+end
