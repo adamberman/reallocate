@@ -29,7 +29,8 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 		var modal = new Reallocate.Views.BidModal({
 			model: this.model
 		})
-		this.addSubview('.modal', modal);
+		this.addSubview('.modals', modal);
+		$('.modal').modal('show');
 	},
 
 	render: function () {

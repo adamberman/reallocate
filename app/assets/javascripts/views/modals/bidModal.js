@@ -1,6 +1,6 @@
 Reallocate.Views.BidModal = Backbone.View.extend({
 
-	className: 'bid-modal',
+	className: 'modal fade',
 
 	template: JST['modals/bid'],
 
