@@ -1,4 +1,4 @@
-Reallocate.Views.IndexItem = Backbone.View.extend({
+Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
 		this._type = options.type;
@@ -22,11 +22,11 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 
 	submitBid: function (event) {
 		event.preventDefault();
-		this.addModal();
+		this.addBidModal();
 	},
 
-	addModal: function () {
-		var modal = new Reallocate.Views.Modal({
+	addBidModal: function () {
+		var modal = new Reallocate.Views.BidModal({
 			model: this.model
 		})
 		this.addSubview('.modal', modal);
@@ -47,6 +47,7 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 		});
 
 		this.$el.html(content);
+		this.attachSubviews();
 		return this;
 	}
 })
