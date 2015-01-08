@@ -1,13 +1,5 @@
 module Api
 	class RequestsController < ApplicationController
-		def create
-			
-		end
-
-		def show
-
-		end
-
 		def index
 			@requests = Request.all
 			render :index

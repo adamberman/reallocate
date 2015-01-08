@@ -1,13 +1,5 @@
 module Api
 	class OrganizationsController < ApplicationController
-		def create
-			
-		end
-
-		def show
-
-		end
-
 		def index
 			@organizations = Organization.all
 			render :index
