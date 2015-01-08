@@ -22,6 +22,14 @@ Reallocate.Views.IndexItem = Backbone.View.extend({
 
 	submitBid: function (event) {
 		event.preventDefault();
+		this.addModal();
+	},
+
+	addModal: function () {
+		var modal = new Reallocate.Views.Modal({
+			model: this.model
+		})
+		this.addSubview('.modal', modal);
 	},
 
 	render: function () {
