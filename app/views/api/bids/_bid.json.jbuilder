@@ -1,7 +1,8 @@
 json.extract!(
 	bid,
 	:id,
-	:content
+	:content,
+	:writer
 )
 
 json.user do

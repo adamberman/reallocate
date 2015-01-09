@@ -6,6 +6,6 @@ class Request < ActiveRecord::Base
 	belongs_to :requestable, polymorphic: true
 
 	def relevent_bids(user)
-		bids.where('user_id = ? OR writer = ?', user.id, 'Requester')
+		self.bids.where('user_id = ? OR writer = ?', user.id, 'Requester')
 	end
 end

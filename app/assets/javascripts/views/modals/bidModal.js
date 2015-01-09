@@ -1,5 +1,9 @@
 Reallocate.Views.BidModal = Backbone.View.extend({
 
+	initialize: function () {
+		this.listenTo(this.model.bids(), 'add', this.render);
+	},
+
 	className: 'modal fade',
 
 	template: JST['modals/bid'],
@@ -10,7 +14,20 @@ Reallocate.Views.BidModal = Backbone.View.extend({
 
 	submitBid: function (event) {
 		event.preventDefault();
-		formValues = this.$('form.new-bid').serializeJSON();
+		var params = this.$('form.new-bid').serializeJSON();
+		params.bid.request_id = this.model.id;
+		params.bid.writer = 'User';
+		var newBid = new Reallocate.Models.Bid(params);
+		var that = this;
+		newBid.save({}, {
+			success: function (model, response) {
+				that.model.bids().add(response);
+				that.$('textarea#new-bid-info').val('');
+			},
+			error: function (model, response) {
+				alert('error!');
+			}
+		})
 	},
 
 	render: function () {
