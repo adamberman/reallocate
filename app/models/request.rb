@@ -5,7 +5,8 @@ class Request < ActiveRecord::Base
 
 	belongs_to :requestable, polymorphic: true
 
-	def relevent_bids
-		bids
+	def relevent_bids(user)
+		debugger
+		bids.where({ user: user })
 	end
 end

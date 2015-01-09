@@ -13,9 +13,8 @@ json.requestable do
 	end
 end
 
-
 json.bids do
-	json.array! request.relevent_bids do |bid|
+	json.array! request.relevent_bids(current_user) do |bid|
 		json.content bid.content
 		json.user do
 		 json.partial! bid.user, partial: 'user', as: :user
