@@ -15,12 +15,14 @@
         <% }) %>
       </div>
       <div class="modal-footer">
-        <textarea
-          id='new-bid-info'
-          class='form-control'
-          name='bid[content]'
-          placeholder='Make a bid or reply'></textarea>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <form class="new-bid">
+          <textarea
+            id='new-bid-info'
+            class='form-control'
+            name='bid[content]'
+            placeholder='Make a bid or reply'></textarea>
+        </form>
+        <button type="button" id="submit-bid" class="btn btn-primary">Submit</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
