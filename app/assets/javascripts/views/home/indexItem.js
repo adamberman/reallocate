@@ -6,7 +6,8 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	events: {
 		'click .request-content-main': 'hideOrUnhide',
-		'click button.bid': 'submitBid'
+		'click button.bid': 'submitBid',
+		'hidden.bs.modal': 'removeBidModal'
 	},
 
 	className: 'index-item',
@@ -31,6 +32,13 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 		})
 		this.addSubview('.modals', modal);
 		$('.modal').modal('show');
+	},
+
+	removeBidModal: function (event) {
+		var subview = _.find(this.subviews('.modals'), function (subview) { 
+			return subview.el === event.target
+		})
+		this.removeSubview('.modals', subview);
 	},
 
 	render: function () {

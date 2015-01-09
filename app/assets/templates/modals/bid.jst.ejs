@@ -4,9 +4,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><%= request.escape('name') %></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body item-content">
         <% request.bids().forEach(function (bid) { %>
-          <p><%= bid.escape('content') %></p>
+          <% if (bid.get('writer') === 'User') { %>
+            <p>Me:
+          <% } else { %>
+            <p><%= request.attributes.requestable.name %>
+          <% } %>  
+          <%= bid.escape('content') %></p>
         <% }) %>
       </div>
       <div class="modal-footer">
