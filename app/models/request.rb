@@ -6,7 +6,6 @@ class Request < ActiveRecord::Base
 	belongs_to :requestable, polymorphic: true
 
 	def relevent_bids(user)
-		debugger
-		bids.where({ user: user })
+		bids.where('user_id = ? OR writer = ?', user.id, 'Requester')
 	end
 end
