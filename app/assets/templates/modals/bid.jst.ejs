@@ -7,7 +7,7 @@
       <div class="modal-body item-content">
         <% request.bids().forEach(function (bid) { %>
           <% if (bid.get('writer') === 'User') { %>
-            <p>Me:
+            <p><%= bid.get('user').name %>
           <% } else { %>
             <p><%= request.attributes.requestable.name %>
           <% } %>  

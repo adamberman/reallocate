@@ -13,7 +13,7 @@ module Api
 		private
 		
 		def bid_params
-			params.require(:bid).permit(:content, :request_id)
+			params.require(:bid).permit(:content, :request_id, :writer)
 		end
 	end
 end
