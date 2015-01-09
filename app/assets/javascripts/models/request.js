@@ -11,7 +11,7 @@ Reallocate.Models.Request = Backbone.Model.extend({
 
 	parse: function (response) {
 		if (response.bids) {
-			this.requests().set(response.bids, { parse: true });
+			this.bids().set(response.bids, { parse: true });
 			delete response.bids;
 		}
 		return response;

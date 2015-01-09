@@ -5,7 +5,9 @@
         <h4 class="modal-title"><%= request.escape('name') %></h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <% request.bids().forEach(function (bid) { %>
+          <p><%= bid.escape('content') %></p>
+        <% }) %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
