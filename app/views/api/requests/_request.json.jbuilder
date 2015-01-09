@@ -19,5 +19,6 @@ json.bids do
 		json.user do
 		 json.partial! bid.user, partial: 'user', as: :user
 		end
+		json.writer bid.writer
 	end
 end
