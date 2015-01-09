@@ -11,7 +11,6 @@ Reallocate.Views.BidModal = Backbone.View.extend({
 	submitBid: function (event) {
 		event.preventDefault();
 		formValues = this.$('form.new-bid').serializeJSON();
-		debugger;
 	},
 
 	render: function () {
