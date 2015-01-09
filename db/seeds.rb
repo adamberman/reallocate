@@ -23,7 +23,8 @@ ActiveRecord::Base.transaction do
 	end
 
 	request1 = Request.first
-	5.times do
+	3.times do
 		request1.bids.create!(user: User.find(1), content: Faker::Hacker.say_something_smart, writer: 'User')
+		request1.bids.create!(user: User.find(1), content: Faker::Hacker.say_something_smart, writer: 'Requester')
 	end
 end
