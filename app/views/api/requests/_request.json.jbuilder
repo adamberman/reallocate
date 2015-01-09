@@ -15,10 +15,6 @@ end
 
 json.bids do
 	json.array! request.relevent_bids(current_user) do |bid|
-		json.content bid.content
-		json.user do
-		 json.partial! bid.user, partial: 'user', as: :user
-		end
-		json.writer bid.writer
+		json.partial! bid, partial: 'bid', as: :bid
 	end
 end

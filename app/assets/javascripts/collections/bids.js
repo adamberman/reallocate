@@ -4,11 +4,11 @@ Reallocate.Collections.Bids = Backbone.Searchable.extend({
 
 	url: '/api/bids',
 
-	comparator: function (card1, card2) {
-		if (card1.id > card2.id) {
-			return -1;
-		} else if (card1.id < card2.id) {
+	comparator: function (bid1, bid2) {
+		if (bid1.id > bid2.id) {
 			return 1;
+		} else if (bid1.id < bid2.id) {
+			return -1;
 		} else {
 			return 0;
 		}
