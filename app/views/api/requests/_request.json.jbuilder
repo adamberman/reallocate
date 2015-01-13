@@ -13,8 +13,6 @@ json.requestable do
 	end
 end
 
-json.bids do
-	json.array! request.relevent_bids(current_user) do |bid|
-		json.partial! bid, partial: 'bid', as: :bid
-	end
+json.transaction do
+	json.partial! request.relevant_transaction(current_user), partial: 'transaction', as: :transaction
 end
