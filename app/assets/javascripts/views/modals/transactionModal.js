@@ -1,4 +1,4 @@
-Reallocate.Views.BidModal = Backbone.View.extend({
+Reallocate.Views.transactionModal = Backbone.View.extend({
 
 	initialize: function () {
 		this.listenTo(this.model.bids(), 'add', this.render);
@@ -6,7 +6,7 @@ Reallocate.Views.BidModal = Backbone.View.extend({
 
 	className: 'modal fade',
 
-	template: JST['modals/bid'],
+	template: JST['modals/transaction'],
 
 	events: {
 		'click button#submit-bid': 'submitBid'
