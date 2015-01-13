@@ -3,9 +3,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :email, uniqueness: true
 
-  has_many :tasks, dependent: :destroy
   has_many :requests, as: :requestable, dependent: :destroy
-  has_many :bids, dependent: :destroy
 
   attr_reader :password
   after_initialize :ensure_session_token
