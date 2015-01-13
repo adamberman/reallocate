@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
 
 	belongs_to :requestable, polymorphic: true
 
-	def relevent_transaction(user)
-		self.transactons.where({ respondable: user })
+	def relevant_transaction(user)
+		self.transactions.where({ respondable: user })
 	end
 end

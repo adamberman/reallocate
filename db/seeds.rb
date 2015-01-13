@@ -21,10 +21,6 @@ ActiveRecord::Base.transaction do
 		organization = Organization.find(organizations.sample)
 		Request.create!(name: Faker::Company.bs, description: Faker::Hacker.say_something_smart, requestable: organization)
 	end
-
-	request1 = Request.first
-	3.times do
-		request1.bids.create!(user: User.find(1), content: Faker::Hacker.say_something_smart, writer: 'User')
-		request1.bids.create!(user: User.find(1), content: Faker::Hacker.say_something_smart, writer: 'Requester')
-	end
+	
+	Request.first.transactions.create!(listable_id: 1, listable_type: 'User')
 end
