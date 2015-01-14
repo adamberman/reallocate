@@ -1,7 +1,7 @@
 Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
-		this._type = options.type;
+		this._type = options.type;		
 	},
 
 	events: {
@@ -57,6 +57,12 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 		this.$el.html(content);
 		this.attachSubviews();
+		var $button = this.$('button.transaction');
+		if (this.model.get('transaction') && 
+			$button.attr('id') === 'new-transaction') {
+			$button.text('View Transaction');
+			$button.attr('id', 'view-transaction');
+		}
 		return this;
 	}
 })

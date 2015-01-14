@@ -1,4 +1,4 @@
-Reallocate.Views.transactionModal = Backbone.View.extend({
+Reallocate.Views.TransactionModal = Backbone.View.extend({
 
 	initialize: function () {
 		// this.listenTo(this.model.bids(), 'add', this.render);
@@ -52,7 +52,7 @@ Reallocate.Views.transactionModal = Backbone.View.extend({
 
 	render: function () {
 		var content = this.template({
-			request: this.model
+			item: this.model
 		});
 		this.$el.html(content);
 		return this;
