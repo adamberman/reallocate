@@ -2,17 +2,17 @@ Reallocate.Models.Request = Backbone.Model.extend({
 
 	urlRoot: "/api/requests",
 
-	bids: function () {
-		if (!this._bids) {
-			this._bids = new Reallocate.Collections.Bids([], { request: this });
+	transaction: function () {
+		if (!this._transaction) {
+			this._transaction = new Reallocate.Model.Transaction({}, { request: this });
 		}
-		return this._bids;
+		return this._transactions;
 	},
 
 	parse: function (response) {
-		if (response.bids) {
-			this.bids().set(response.bids, { parse: true });
-			delete response.bids;
+		if (response.transaction) {
+			this.transaction().set(response.transaction, { parse: true });
+			delete response.transaction;
 		}
 		return response;
 	}

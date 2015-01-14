@@ -6,6 +6,6 @@ class Request < ActiveRecord::Base
 	belongs_to :requestable, polymorphic: true
 
 	def relevant_transaction(user)
-		self.transactions.where({ respondable: user })
+		self.transactions.where('respondable_id = ?', user.id).first
 	end
 end

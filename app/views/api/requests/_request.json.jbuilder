@@ -14,5 +14,7 @@ json.requestable do
 end
 
 json.transaction do
-	json.partial! request.relevant_transaction(current_user), partial: 'transaction', as: :transaction
+	if request.relevant_transaction(current_user)
+		transaction = json.partial! request.relevant_transaction(current_user), partial: 'transaction', as: :transaction
+	end
 end
