@@ -5,24 +5,24 @@
         <h4 class="modal-title"><%= request.escape('name') %></h4>
       </div>
       <div class="modal-body item-content">
-        <% request.bids().forEach(function (bid) { %>
+       <!-- <% request.bids().forEach(function (bid) { %>
           <% if (bid.get('writer') === 'User') { %>
-            <p><%= bid.get('user').name %>:
+            <p><%= bid.get('user').name
           <% } else { %>
-            <p><%= request.attributes.requestable.name %>:
+            <p><%= request.attributes.requestable.name %>
           <% } %>  
           <%= bid.escape('content') %></p>
-        <% }) %>
+        <% }) %> -->
       </div>
       <div class="modal-footer">
-        <form class="new-bid">
+        <form class="new-transaction">
           <textarea
-            id='new-bid-info'
+            id='new-transaction-info'
             class='form-control'
-            name='bid[content]'
-            placeholder='Make a bid or reply'></textarea>
+            name='transaction[content]'
+            placeholder='Submit an offer or request!'></textarea>
         </form>
-        <button type="button" id="submit-bid" class="btn btn-primary">Submit</button>
+        <button type="button" id="submit-transaction" class="btn btn-primary">Submit</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
