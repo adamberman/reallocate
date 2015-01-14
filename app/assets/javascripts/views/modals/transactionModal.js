@@ -14,12 +14,20 @@ Reallocate.Views.transactionModal = Backbone.View.extend({
 
 	createTransaction: function (event) {
 		event.preventDefault();
-		var params = 
+		var params = {
+			transaction: {
+				listable_id: Reallocate.CurrentUser.id,
+				listable_type: 'User'
+			}
+		}
 		var newTransaction = new Reallocate.Models.Transaction(params);
 		var that = this;
 		newTransaction.save({}, {
-			success: function(model, response) {
-				
+			success: function (model, response) {
+				alert('added')
+			},
+			error: function (model, response) {
+				alert('error')
 			}
 		})
 	},
