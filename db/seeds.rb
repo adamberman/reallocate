@@ -21,6 +21,6 @@ ActiveRecord::Base.transaction do
 		organization = Organization.find(organizations.sample)
 		Request.create!(name: Faker::Company.bs, description: Faker::Hacker.say_something_smart, requestable: organization)
 	end
-	
-	Request.first.transactions.create!(listable_id: 1, listable_type: 'User')
+
+	Request.first.transactions.create!(respondable_id: 1, respondable_type: 'User')
 end

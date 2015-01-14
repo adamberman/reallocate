@@ -4,7 +4,7 @@ class Transaction < ActiveRecord::Base
 	belongs_to :listable, polymorphic: true
 	belongs_to :respondable, polymorphic: true
 
-	before_save :set_name_and_description
+	before_validation :set_name_and_description
 
 	private
 
