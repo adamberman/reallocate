@@ -4,9 +4,9 @@ Reallocate.Models.Request = Backbone.Model.extend({
 
 	transaction: function () {
 		if (!this._transaction) {
-			this._transaction = new Reallocate.Model.Transaction({}, { request: this });
+			this._transaction = new Reallocate.Models.Transaction({}, { request: this });
 		}
-		return this._transactions;
+		return this._transaction;
 	},
 
 	parse: function (response) {

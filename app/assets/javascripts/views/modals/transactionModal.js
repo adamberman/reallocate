@@ -9,20 +9,25 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 	template: JST['modals/transaction'],
 
 	events: {
-		'click button#create-transaction': 'createTransaction'
+		'click button#submit-transaction': 'saveTransaction'
 	},
 
-	createTransaction: function (event) {
+	saveTransaction: function (event) {
 		event.preventDefault();
-		var params = {
-			transaction: {
-				listable_id: Reallocate.CurrentUser.id,
-				listable_type: 'User'
+		if (this.model.get('transaction')) {
+			// update params attributes you want updated
+		} else {
+			var params = {
+				transaction: {
+					listable_id: this.model.id,
+					listable_type: 'Request'
+				}
 			}
+			var transactionModel = new Reallocate.Models.Transaction(params);
+			this.model.transaction().set(transactionModel);
 		}
-		var newTransaction = new Reallocate.Models.Transaction(params);
 		var that = this;
-		newTransaction.save({}, {
+		this.model.transaction().save({}, {
 			success: function (model, response) {
 				alert('added')
 			},

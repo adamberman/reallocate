@@ -1,4 +1,4 @@
-Reallocate.Models.Request = Backbone.Model.extend({
+Reallocate.Models.Transaction = Backbone.Model.extend({
 
 	urlRoot: "/api/transactions"
 	
