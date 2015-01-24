@@ -1,7 +1,7 @@
 module Api
 	class TransactionsController < ApplicationController
 		def create
-			@transaction = current_user.responses.new(transaction_params)
+			@transaction = current_user.responded_transactions.new(transaction_params)
 
 			if @transaction.save
 				render :show, status: :created
@@ -13,8 +13,8 @@ module Api
 		def update
 			@transaction = Transaction.find(params[:id])
 
-			if @transaction.save
-				render :show, status: :saved
+			if @transaction.update_attributes(transaction_params)
+				render :show
 			else
 				render json: @transaction.errors.full_messages, status: :unprocessable_entity
 			end
