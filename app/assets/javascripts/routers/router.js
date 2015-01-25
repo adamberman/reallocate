@@ -32,6 +32,12 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		this._swapView(view);
 	},
 
+	dashboard: function() {
+		Reallocate.currentUser.fetch();
+		var view = new Reallocate.Views.Dashboard();
+		this._swapView(view);
+	},
+
 	// home page, which is also the search page for organizations, tasks, etc. For now, anyone can do everything, but eventually only logged in users will be able to do some things
 	home: function () {
 		var organizations = new Reallocate.Collections.Organizations();
