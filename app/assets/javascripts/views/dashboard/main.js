@@ -5,8 +5,9 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 	template: JST['dashboard/main'],
 
 	render: function() {
+		var requests = Reallocate.currentUser.requests()
 		var content = this.template({
-			requests: Reallocate.curretUser.requests()
+			requests: requests
 		});
 		this.$el.html(content);
 		this.attachSubviews();

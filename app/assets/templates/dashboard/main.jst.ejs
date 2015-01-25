@@ -1,4 +1,14 @@
 <h2>
 	Dashboard!
 </h2>
-<div id='requests'></div>
+<div id='requests'>
+	<% for (var i = 0; i < requests.length; i++) { %>
+		<% request = requests.at(i); %>
+		<div><%= request.escape('name') %></div>
+		<% transactions = request.transactions(); %>
+		<% for (var j = 0; j < transactions.length; j++) { %>
+			<% transaction = transactions.at(j); %>
+			<div><%= transaction.escape('name') %></div>
+		<% } %>
+	<% } %>
+</div>
