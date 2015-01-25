@@ -8,6 +8,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"": "main",
 		"login": "login",
 		"signup": "signup",
+		"dashboard": "dashboard",
 		"home": "home",
 		"home/organizations": "home",
 		"home/requests": "requests"

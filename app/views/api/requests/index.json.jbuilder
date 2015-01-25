@@ -1,1 +1,1 @@
-json.array! @requests, partial: 'request', as: :request
+json.array! @requests, partial: 'request', as: :request, show_user: true
