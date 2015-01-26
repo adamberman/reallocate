@@ -18,8 +18,8 @@ Reallocate.Views.Navbar = Backbone.CompositeView.extend({
 	logoutUser: function () {
 		$.ajax({
 			url: '/api/session',
-			type: 'DELETE'
-			success: function () {
+			type: 'DELETE',
+			success: function (model, resp) {
 				Reallocate.currentUser.clear();
 				Backbone.history.navigate('', { trigger: true })
 			}
