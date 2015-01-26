@@ -9,7 +9,11 @@
 		<% transactions = request.transactions(); %>
 		<% for (var j = 0; j < transactions.length; j++) { %>
 			<% transaction = transactions.at(j); %>
-			<div><%= transaction.escape('name') %></div>
+			<button 
+				class='btn btn-primary transaction'
+				id='<%= transaction.id %>'>
+				<%= transaction.escape('name') %>
+			</button>
 		<% } %>
 	<% } %>
 </div>
