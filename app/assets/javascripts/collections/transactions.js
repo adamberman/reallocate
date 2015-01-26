@@ -1,4 +1,4 @@
-Reallocate.Collections.Organizations = Backbone.Collection.extend({
+Reallocate.Collections.Transactions = Backbone.Collection.extend({
 
 	model: Reallocate.Models.Transaction,
 

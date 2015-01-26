@@ -34,7 +34,9 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 	dashboard: function() {
 		Reallocate.currentUser.fetch();
-		var view = new Reallocate.Views.Dashboard();
+		var view = new Reallocate.Views.Dashboard({
+			model: Reallocate.currentUser
+		});
 		this._swapView(view);
 	},
 

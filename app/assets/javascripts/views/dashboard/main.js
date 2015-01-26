@@ -1,10 +1,14 @@
 Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 
+	initialize: function () {
+		this.listenTo(this.model, 'sync', this.render);
+	},
+
 	className: 'main',
 
 	template: JST['dashboard/main'],
 
-	render: function() {
+	render: function () {
 		var requests = Reallocate.currentUser.requests()
 		var content = this.template({
 			requests: requests

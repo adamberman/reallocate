@@ -11,9 +11,9 @@ Reallocate.Models.Request = Backbone.Model.extend({
 
 	transactions: function() {
 		if (!this._transactions) {
-			this._transactions = new Reallocate.Collections.Transactions({}, { request: this });
+			this._transactions = new Reallocate.Collections.Transactions([], { request: this });
 		}
-		return this._transaction;
+		return this._transactions;
 	},
 
 	parse: function (response) {
