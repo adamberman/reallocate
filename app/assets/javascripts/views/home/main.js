@@ -2,6 +2,7 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
 		this._type = options.type;
+		this.addNavbar();
 		this.addIndex();
 		this.addSearch();
 	},
@@ -9,6 +10,11 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 	className: 'main',
 
 	template: JST['home/main'],
+
+	addNavbar: function () {
+		var navbar = new Reallocate.Views.Navbar();
+		this.addSubview('#navbar', navbar)
+	},
 
 	addIndex: function () {
 		var index = new Reallocate.Views.HomeIndex({

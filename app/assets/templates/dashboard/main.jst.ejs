@@ -5,15 +5,19 @@
 <div id='requests'>
 	<% for (var i = 0; i < requests.length; i++) { %>
 		<% request = requests.at(i); %>
-		<div><%= request.escape('name') %></div>
-		<% transactions = request.transactions(); %>
-		<% for (var j = 0; j < transactions.length; j++) { %>
-			<% transaction = transactions.at(j); %>
-			<button 
-				class='btn btn-primary transaction'
-				id='<%= transaction.id %>'>
-				<%= transaction.escape('name') %>
-			</button>
-		<% } %>
+		<div>
+			<h4><%= request.escape('name') %></h4>
+			<% transactions = request.transactions(); %>
+			<% for (var j = 0; j < transactions.length; j++) { %>
+				<% transaction = transactions.at(j); %>
+				<button 
+					class='btn btn-primary transaction'
+					data-requestid='<%= request.id %>'
+					data-transactionid='<%= transaction.id %>'>
+					<%= transaction.escape('name') %>
+				</button>
+			<% } %>
+		</div>
 	<% } %>
 </div>
+<div class="modals"></div>

@@ -1,7 +1,11 @@
 Reallocate.Views.TransactionModal = Backbone.View.extend({
 
-	initialize: function () {
+	initialize: function (options) {
 		// this.listenTo(this.model.bids(), 'add', this.render);
+		if (options.transaction) {
+			this.model = options.transaction;
+			this._modelType = 'transaction';
+		}
 	},
 
 	className: 'modal fade',
@@ -14,7 +18,7 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 
 	saveTransaction: function (event) {
 		event.preventDefault();
-		if (this.model.get('transaction')) {
+		if (this.model.get('transaction') || this._modelType == 'transaction') {
 			// update params attributes you want updated
 		} else {
 			var params = {
@@ -27,33 +31,26 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 			this.model.transaction().set(transactionModel);
 		}
 		var that = this;
-		this.model.transaction().save({}, {
-			success: function (model, response) {
-				alert('added')
-			},
-			error: function (model, response) {
-				alert('error')
-			}
-		})
+		if (this._modelType == 'transaction') {
+			this.model.save({}, {
+				success: function (model, response) {
+					alert('added');
+				},
+				error: function (model, response) {
+					alert('error');
+				}
+			});
+		} else {
+			this.model.transaction().save({}, {
+				success: function (model, response) {
+					alert('added')
+				},
+				error: function (model, response) {
+					alert('error')
+				}
+			});
+		}
 	},
-
-	// submitBid: function (event) {
-	// 	event.preventDefault();
-	// 	var params = this.$('form.new-bid').serializeJSON();
-	// 	params.bid.request_id = this.model.id;
-	// 	params.bid.writer = 'User';
-	// 	var newBid = new Reallocate.Models.Bid(params);
-	// 	var that = this;
-	// 	newBid.save({}, {
-	// 		success: function (model, response) {
-	// 			that.model.bids().add(response);
-	// 			that.$('textarea#new-bid-info').val('');
-	// 		},
-	// 		error: function (model, response) {
-	// 			alert('error!');
-	// 		}
-	// 	})
-	// },
 
 	render: function () {
 		var content = this.template({
