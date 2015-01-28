@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-	validates :name, :description, :listable, :respondable, presence: true
+	validates :name, :description, :listable, :respondable, :hours, presence: true
 	validates( 
 		:respondable_id, 
 		uniqueness: 

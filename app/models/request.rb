@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-	validates :name, :description, :requestable, presence: true
+	validates :name, :description, :requestable, :hours, presence: true
 
 	has_many :transactions, as: :listable, dependent: :destroy
 

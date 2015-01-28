@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113180832) do
+ActiveRecord::Schema.define(version: 20150128205707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150113180832) do
     t.string   "requestable_type", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "hours",            null: false
   end
 
   add_index "requests", ["requestable_id"], name: "index_requests_on_requestable_id", using: :btree
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150113180832) do
     t.string   "respondable_type", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "hours",            null: false
   end
 
   create_table "users", force: true do |t|
