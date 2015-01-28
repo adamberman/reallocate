@@ -8,7 +8,7 @@ module Api
 		private
 		
 		def request_params
-			params.require(:request).permit(:name, :description)
+			params.require(:request).permit(:name, :description, :hours)
 		end
 	end
 end
