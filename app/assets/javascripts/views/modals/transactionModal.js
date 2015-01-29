@@ -19,7 +19,12 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 	saveTransaction: function (event) {
 		event.preventDefault();
 		if (this.model.get('transaction') || this._modelType == 'transaction') {
-			// update params attributes you want updated
+			var params = $('form.new_transaction').val().serializeJSON();
+			if (this.model.get('transaction')) {
+				this.model.get('transaction').set(params);
+			} else {
+				this.model.set(params);
+			}
 		} else {
 			var params = {
 				transaction: {
