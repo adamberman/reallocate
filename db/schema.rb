@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128205707) do
+ActiveRecord::Schema.define(version: 20150129011349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,27 +27,29 @@ ActiveRecord::Schema.define(version: 20150128205707) do
   add_index "organizations", ["name"], name: "index_organizations_on_name", using: :btree
 
   create_table "requests", force: true do |t|
-    t.string   "name",             null: false
-    t.string   "description",      null: false
-    t.integer  "requestable_id",   null: false
-    t.string   "requestable_type", null: false
+    t.string   "name",                                 null: false
+    t.string   "description",                          null: false
+    t.integer  "requestable_id",                       null: false
+    t.string   "requestable_type",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "hours",            null: false
+    t.integer  "hours",                                null: false
+    t.string   "status",           default: "Pending", null: false
   end
 
   add_index "requests", ["requestable_id"], name: "index_requests_on_requestable_id", using: :btree
 
   create_table "transactions", force: true do |t|
-    t.string   "name",             null: false
-    t.string   "description",      null: false
-    t.integer  "listable_id",      null: false
-    t.string   "listable_type",    null: false
-    t.integer  "respondable_id",   null: false
-    t.string   "respondable_type", null: false
+    t.string   "name",                                 null: false
+    t.string   "description",                          null: false
+    t.integer  "listable_id",                          null: false
+    t.string   "listable_type",                        null: false
+    t.integer  "respondable_id",                       null: false
+    t.string   "respondable_type",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "hours",            null: false
+    t.integer  "hours",                                null: false
+    t.string   "status",           default: "Pending", null: false
   end
 
   create_table "users", force: true do |t|
