@@ -10,11 +10,19 @@
       </div>
       <div class="modal-footer">
         <form class="new-transaction">
-          <textarea
+          <!-- <textarea
             id='new-transaction-info'
             class='form-control'
             name='transaction[content]'
-            placeholder='Submit an offer or request!'></textarea>
+            placeholder='Submit an offer or request!'></textarea> -->
+          <label id="transaction-hours">
+            Think it'll take more or less than the listed number of hours? Make your revision here:
+          </label>
+          <input 
+            type="number"
+            id="transaction-hours"
+            name="transaction[hours]"
+            value="<%= item.escape('hours') %>">
         </form>
         <button type="button" id="submit-transaction" class="btn btn-primary">Submit</button>
       </div>
