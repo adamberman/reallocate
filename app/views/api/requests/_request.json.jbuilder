@@ -3,7 +3,8 @@ json.extract!(
 	:id,
 	:name,
 	:description,
-	:hours
+	:hours,
+	:status
 )
 
 if show_user

@@ -3,5 +3,6 @@ json.extract!(
 	:id,
 	:name,
 	:description,
-	:hours
+	:hours,
+	:status
 )
