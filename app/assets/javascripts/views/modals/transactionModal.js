@@ -12,6 +12,8 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 	template: JST['modals/transaction'],
 
 	events: {
+		'click button#accept-transaction-button': 'acceptTransaction',
+		'click button#edit-transaction-button': 'toggleEditView',
 		'click button#submit-transaction': 'saveTransaction'
 	},
 
@@ -30,6 +32,18 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 		});
 	},
 
+	acceptTransaction: function (event) {
+
+	},
+
+	toggleEditView: function() {
+		$('#transaction-edit').toggleClass('hidden-container');
+	},
+
+	addSaveButton: function () {
+		$('button#accept-transaction-button').removeClass('hidden-container');
+	},
+
 	render: function () {
 		if (this.indexItem) {
 			var content = this.template({
@@ -41,7 +55,7 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 			});
 		}
 		if (this.model.acceptable()) {
-			this.renderSaveButton();
+			this.addSaveButton();
 		}
 		this.$el.html(content);
 		return this;

@@ -15,16 +15,37 @@
             class='form-control'
             name='transaction[content]'
             placeholder='Submit an offer or request!'></textarea> -->
-          <label id="transaction-hours">
-            Think it'll take more or less than the listed number of hours? Make your revision here:
-          </label>
-          <input 
-            type="number"
-            id="transaction-hours"
-            name="transaction[hours]"
-            value="<%= item.escape('hours') %>">
+          <div id="transaction-edit" class="hidden-container">
+            <label for="transaction-hours">
+              Think it'll take more or less than the listed number of hours? Make your revision here:
+            </label>
+            <input 
+              type="number"
+              id="transaction-hours"
+              name="transaction[hours]"
+              value="<%= item.escape('hours') %>">
+          </div>
+          <button 
+            type="button" 
+            id="submit-transaction" 
+            class="btn btn-primary">
+            Submit
+          </button>
         </form>
-        <button type="button" id="submit-transaction" class="btn btn-primary">Submit</button>
+        <div id="transaction-buttons">
+          <button
+            type="button"
+            id="accept-transaction-button"
+            class="btn btn-primary hidden-container">
+            Accept
+          </button>
+          <button
+            type="button"
+            id="edit-transaction-button"
+            class="btn btn-primary">
+            Edit/Respond
+          </button>
+        </div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
