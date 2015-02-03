@@ -10,6 +10,16 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
+  def increase_hours(hours)
+    self.hours += hours
+    self.save!
+  end
+
+  def decrease_hours(hours)
+    self.hours -= hours
+    self.save!
+  end
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil if user.nil?

@@ -10,7 +10,8 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 	template: JST['dashboard/main'],
 
 	events: {
-		'click button.transaction': 'viewTransaction'
+		'click button.transaction': 'viewTransaction',
+		'click button.transaction-pay': 'payTransaction'
 	},
 
 	addNavbar: function () {
@@ -18,7 +19,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 		this.addSubview('#navbar', navbar)
 	},
 
-	viewTransaction: function(event) {
+	viewTransaction: function (event) {
 		event.preventDefault();
 		var $transaction = $(event.currentTarget);
 		var transactionId = $transaction.data('transactionid');
@@ -32,6 +33,27 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 		});
 		this.addSubview('.modals', transactionModal);
 		$('.modal').modal('show');
+	},
+
+	payTransaction: function (event) {
+		event.preventDefault();
+		var $transaction = $(event.currentTarget);
+		var transactionId = $transaction.data('transactionid');
+		var requestId = $transaction.data('requestid');
+		var requests = this.model.requests();
+		var request = requests.get(requestId);
+		var transactions = request.transactions();
+		var transaction = transactions.get(transactionId);
+		transaction.save({
+			status: 'Paid'
+		}, {
+			success: function (model, response) {
+				alert('paid');
+			},
+			error: function (model, response) {
+				alert('error');
+			}
+		});
 	},
 
 	render: function () {
