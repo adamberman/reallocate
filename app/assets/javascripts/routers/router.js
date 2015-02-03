@@ -9,6 +9,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"login": "login",
 		"signup": "signup",
 		"dashboard": "dashboard",
+		"requests/new": "newRequest",
 		"home": "home",
 		"home/organizations": "home",
 		"home/requests": "requests"
@@ -37,6 +38,11 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		var view = new Reallocate.Views.Dashboard({
 			model: Reallocate.currentUser
 		});
+		this._swapView(view);
+	},
+
+	newRequest: function() {
+		var view = new Reallocate.Views.NewRequest();
 		this._swapView(view);
 	},
 
