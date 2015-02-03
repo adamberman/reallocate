@@ -33,7 +33,18 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 	},
 
 	acceptTransaction: function (event) {
-
+		event.preventDefault();
+		this.model.set({
+			status: 'Accepted'
+		});
+		this.model.save({}, {
+			success: function (model, response) {
+				alert('accepted');
+			},
+			error: function (model, response) {
+				alert('error');
+			}
+		});
 	},
 
 	toggleEditView: function() {
