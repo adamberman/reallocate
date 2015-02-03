@@ -1,5 +1,18 @@
 module Api
 	class RequestsController < ApplicationController
+		def create
+			@request = Request.new(transaction_params)
+			@request.requestable_id = current_user.id
+			@request.requestable_type = 'User'
+			@request.status = 'Pending'
+
+			if @request.save
+				render :show, status: :created
+			else
+				render json: @request.errors.full_messages, status: :unprocessable_entity
+			end
+		end
+
 		def index
 			@requests = Request.all
 			render :index
