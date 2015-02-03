@@ -2,6 +2,7 @@ module Api
 	class TransactionsController < ApplicationController
 		def create
 			@transaction = current_user.responded_transactions.new(transaction_params)
+			@transaction.last_edited_id = current_user
 
 			if @transaction.save
 				render :show, status: :created
@@ -12,6 +13,7 @@ module Api
 
 		def update
 			@transaction = Transaction.find(params[:id])
+			@transaction.last_edited_id = current_user
 
 			if @transaction.update_attributes(transaction_params)
 				render :show

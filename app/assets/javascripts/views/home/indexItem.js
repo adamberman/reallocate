@@ -28,7 +28,8 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	addTransactionModal: function () {
 		var modal = new Reallocate.Views.TransactionModal({
-			model: this.model
+			indexItem: this.model,
+			model: new Reallocate.Models.Transaction()
 		})
 		this.addSubview('.modals', modal);
 		$('.modal').modal('show');
