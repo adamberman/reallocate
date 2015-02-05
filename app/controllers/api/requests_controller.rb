@@ -1,7 +1,7 @@
 module Api
 	class RequestsController < ApplicationController
 		def create
-			@request = Request.new(transaction_params)
+			@request = Request.new(request_params)
 			@request.requestable_id = current_user.id
 			@request.requestable_type = 'User'
 			@request.status = 'Pending'

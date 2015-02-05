@@ -1,1 +1,1 @@
-json.partial! 'api/requests/request', request: @request
+json.partial! 'api/requests/request', request: @request, show_user: true
