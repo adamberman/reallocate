@@ -8,20 +8,24 @@
 		<div>
 			<h4><%= request.escape('name') %></h4>
 			<% transactions = request.transactions(); %>
-			<% for (var j = 0; j < transactions.length; j++) { %>
-				<% transaction = transactions.at(j); %>
-				<button 
-					class='btn btn-primary transaction'
-					data-requestid='<%= request.id %>'
-					data-transactionid='<%= transaction.id %>'>
-					<%= transaction.escape('name') %>
-				</button>
-				<% if (transaction.get('status') === 'Accepted') { %>
-					<button
-						class='btn btn-primary transaction-pay'
+			<% if (transactions.length === 0) { %>
+				<p>No Transactions on this request</p>
+			<% } else { %>
+				<% for (var j = 0; j < transactions.length; j++) { %>
+					<% transaction = transactions.at(j); %>
+					<button 
+						class='btn btn-primary transaction'
+						data-requestid='<%= request.id %>'
 						data-transactionid='<%= transaction.id %>'>
-						Pay: <%= transaction.escape('name') %>
+						<%= transaction.escape('name') %>
 					</button>
+					<% if (transaction.get('status') === 'Accepted') { %>
+						<button
+							class='btn btn-primary transaction-pay'
+							data-transactionid='<%= transaction.id %>'>
+							Pay: <%= transaction.escape('name') %>
+						</button>
+					<% } %>
 				<% } %>
 			<% } %>
 		</div>
