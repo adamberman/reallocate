@@ -17,8 +17,8 @@
 	<% if current_user %>
 		Reallocate.currentUser = new Reallocate.Models.User({
 			id: "<%= current_user.id %>",
-			firstName: "<%= current_user.first_name %>",
-			lastName: "<%= current_user.last_name %>",
+			first_name: "<%= current_user.first_name %>",
+			last_name: "<%= current_user.last_name %>",
 			email: "<%= current_user.email %>",
 			gravatar_url: "<%= current_user.gravatar_url %>"
 		});

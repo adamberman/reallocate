@@ -11,7 +11,9 @@ Reallocate.Views.Navbar = Backbone.CompositeView.extend({
 	},
 
 	addUserOptions: function () {
-		var userOptions = new Reallocate.Views.UserOptions();
+		var userOptions = new Reallocate.Views.UserOptions({
+			model: Reallocate.currentUser
+		});
 		this.addSubview('#navbar-user-collapse', userOptions);
 	},
 
