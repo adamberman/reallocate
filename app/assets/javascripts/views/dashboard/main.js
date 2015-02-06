@@ -29,7 +29,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 		var transactions = request.transactions();
 		var transaction = transactions.get(transactionId);
 		var transactionModal = new Reallocate.Views.TransactionModal({
-			transaction: transaction
+			model: transaction
 		});
 		this.addSubview('.modals', transactionModal);
 		$('.modal').modal('show');
@@ -37,6 +37,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 
 	payTransaction: function (event) {
 		event.preventDefault();
+		debugger;
 		var $transaction = $(event.currentTarget);
 		var transactionId = $transaction.data('transactionid');
 		var requestId = $transaction.data('requestid');

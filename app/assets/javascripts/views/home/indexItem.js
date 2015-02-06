@@ -1,7 +1,7 @@
 Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
-		this._type = options.type;		
+		this._type = options.type;
 	},
 
 	events: {
@@ -27,10 +27,17 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 	},
 
 	addTransactionModal: function () {
-		var modal = new Reallocate.Views.TransactionModal({
-			indexItem: this.model,
-			model: new Reallocate.Models.Transaction()
-		})
+		if (this.model.transaction().id) {
+			var modal = new Reallocate.Views.TransactionModal({
+				indexItem: this.model,
+				model: this.model.transaction()
+			})
+		} else {
+			var modal = new Reallocate.Views.TransactionModal({
+				indexItem: this.model,
+				model: new Reallocate.Models.Transaction()
+			})
+		}
 		this.addSubview('.modals', modal);
 		$('.modal').modal('show');
 	},
@@ -59,7 +66,7 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.attachSubviews();
 		var $button = this.$('button.transaction');
-		if (this.model.get('transaction') && 
+		if (this.model.transaction().id && 
 			$button.attr('id') === 'new-transaction') {
 			$button.text('View Transaction');
 			$button.attr('id', 'view-transaction');

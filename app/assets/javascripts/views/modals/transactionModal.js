@@ -1,7 +1,6 @@
 Reallocate.Views.TransactionModal = Backbone.View.extend({
 
 	initialize: function (options) {
-		// this.listenTo(this.model.bids(), 'add', this.render);
 		if (options.indexItem) {
 			this.indexItem = options.indexItem;
 		}
@@ -19,7 +18,12 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 
 	saveTransaction: function (event) {
 		event.preventDefault();
-		var params = $('form.new-transaction').val().serializeJSON();
+		var params = $('form.new-transaction').serializeJSON();
+		params.transaction.hours = parseInt(params.transaction.hours);
+		if (this.indexItem) {
+			params.transaction.listable_type = 'Request';
+			params.transaction.listable_id = this.indexItem.id;
+		}
 		this.model.set(params);
 		var that = this;
 		this.model.save({}, {
@@ -47,28 +51,25 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 		});
 	},
 
-	toggleEditView: function() {
+	toggleEditView: function(event) {
+		event.preventDefault();
 		$('#transaction-edit').toggleClass('hidden-container');
 	},
 
-	addSaveButton: function () {
-		$('button#accept-transaction-button').removeClass('hidden-container');
-	},
-
 	render: function () {
-		if (this.indexItem) {
+		if (this.indexItem && !this.indexItem.transaction().id) {
 			var content = this.template({
-				item: this.indexItem
+				item: this.indexItem,
+				acceptable: this.model.acceptable()
 			});
 		} else {
 			var content = this.template({
-				item: this.model
+				item: this.model,
+				acceptable: this.model.acceptable()
 			});
 		}
-		if (this.model.acceptable()) {
-			this.addSaveButton();
-		}
 		this.$el.html(content);
+
 		return this;
 	}
 })

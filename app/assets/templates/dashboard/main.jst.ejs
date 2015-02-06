@@ -22,6 +22,7 @@
 					<% if (transaction.get('status') === 'Accepted') { %>
 						<button
 							class='btn btn-primary transaction-pay'
+							data-requestid='<%= request.id %>'
 							data-transactionid='<%= transaction.id %>'>
 							Pay: <%= transaction.escape('name') %>
 						</button>
