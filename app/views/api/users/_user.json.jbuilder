@@ -4,6 +4,7 @@ json.extract!(
 	:first_name,
 	:last_name,
 	:email,
+	:hours,
 	:gravatar_url
 )
 

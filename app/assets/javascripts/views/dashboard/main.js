@@ -37,7 +37,6 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 
 	payTransaction: function (event) {
 		event.preventDefault();
-		debugger;
 		var $transaction = $(event.currentTarget);
 		var transactionId = $transaction.data('transactionid');
 		var requestId = $transaction.data('requestid');
@@ -60,6 +59,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 	render: function () {
 		var requests = Reallocate.currentUser.requests()
 		var content = this.template({
+			user: this.model,
 			requests: requests
 		});
 		this.$el.html(content);

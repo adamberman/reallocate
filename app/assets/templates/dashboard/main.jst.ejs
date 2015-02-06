@@ -2,6 +2,9 @@
 <h2>
 	Dashboard!
 </h2>
+<h4>
+	You have <%= user.escape('hours') %> hours
+</h4>
 <div id='requests'>
 	<% for (var i = 0; i < requests.length; i++) { %>
 		<% request = requests.at(i); %>
@@ -19,6 +22,7 @@
 						data-transactionid='<%= transaction.id %>'>
 						<%= transaction.escape('name') %>
 					</button>
+					<p><%= transaction.escape('status') %></p>
 					<% if (transaction.get('status') === 'Accepted') { %>
 						<button
 							class='btn btn-primary transaction-pay'
