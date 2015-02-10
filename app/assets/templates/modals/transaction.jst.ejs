@@ -36,12 +36,14 @@
               Accept
             </button>
           <% } %>
+          <% if (editable) { %>
           <button
             type="button"
             id="edit-transaction-button"
             class="btn btn-primary">
             Edit/Respond
           </button>
+          <% } %>
         </div>
       </div>
     </div><!-- /.modal-content -->

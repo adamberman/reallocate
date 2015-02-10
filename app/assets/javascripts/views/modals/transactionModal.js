@@ -60,12 +60,14 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 		if (this.indexItem && !this.indexItem.transaction().id) {
 			var content = this.template({
 				item: this.indexItem,
-				acceptable: this.model.acceptable()
+				acceptable: this.model.acceptable(),
+				editable: this.model.editable()
 			});
 		} else {
 			var content = this.template({
 				item: this.model,
-				acceptable: this.model.acceptable()
+				acceptable: this.model.acceptable(),
+				editable: this.model.editable()
 			});
 		}
 		this.$el.html(content);

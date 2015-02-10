@@ -5,9 +5,15 @@ Reallocate.Models.Transaction = Backbone.Model.extend({
 	acceptable: function() {
 		if (this.has('last_edited_id') && this.get('last_edited_id') != Reallocate.currentUser.id) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
+	},
+
+	editable: function() {
+		if (this.get('status') == 'Pending') {
+			return true;
+		}
+		return false;
 	}
 	
 })
