@@ -26,7 +26,7 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	hideOrUnhideOffer: function () {
 		this.$('.offer-content-expander').toggleClass('hidden-container');
-		this.$('.offer-content-expander').toggleClass('hidden-container');
+		this.$('.offer-content-header').toggleClass('hidden-container');
 	},
 
 	handleTransactionClick: function (event) {
@@ -61,18 +61,18 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	render: function () {
 		var content;
-		if (this._type === 'organization') {
+		if (this._type === 'Organization') {
 			content = this.organizationTemplate({
 				item: this.model
 			});
 		}
-		if (this._type === 'request') {
+		if (this._type === 'Request') {
 			content = this.requestTemplate({
 				item: this.model,
 				requestable: this.model.attributes.requestable
 			});
 		}
-		if (this._type === 'offer') {
+		if (this._type === 'Offer') {
 			content = this.offerTemplate({
 				item: this.model,
 				offerable: this.model.attributes.offerable

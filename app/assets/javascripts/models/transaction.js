@@ -10,7 +10,7 @@ Reallocate.Models.Transaction = Backbone.Model.extend({
 	},
 
 	editable: function() {
-		if (this.get('status') == 'Pending') {
+		if (!this.has('status') || this.get('status') == 'Pending') {
 			return true;
 		}
 		return false;
