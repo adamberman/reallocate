@@ -60,7 +60,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 		var view = new Reallocate.Views.HomeMain({
 			collection: organizations,
-			type: 'organization'
+			type: 'Organization'
 		});
 
 		this._swapView(view);
@@ -72,7 +72,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 		var view = new Reallocate.Views.HomeMain({
 			collection: requests,
-			type: 'request'
+			type: 'Request'
 		});
 
 		this._swapView(view);
@@ -84,7 +84,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 
 		var view = new Reallocate.Views.HomeMain({
 			collection: offers,
-			type: 'offer'
+			type: 'Offer'
 		});
 
 		this._swapView(view);
