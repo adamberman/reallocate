@@ -23,10 +23,19 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var $transaction = $(event.currentTarget);
 		var transactionId = $transaction.data('transactionid');
-		var requestId = $transaction.data('requestid');
-		var requests = this.model.requests();
-		var request = requests.get(requestId);
-		var transactions = request.transactions();
+		
+		if ($transaction.data('requestid')) {
+			var requestId = $transaction.data('requestid');
+			var requests = this.model.requests();
+			var request = requests.get(requestId);
+			var transactions = request.transactions();
+		} else {
+			var offerId = $transaction.data('offerid');
+			var offers = this.model.offers();
+			var offer = offers.get(offerId);
+			var transactions = offer.transactions();
+		}
+		
 		var transaction = transactions.get(transactionId);
 		var transactionModal = new Reallocate.Views.TransactionModal({
 			model: transaction
@@ -39,10 +48,19 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var $transaction = $(event.currentTarget);
 		var transactionId = $transaction.data('transactionid');
-		var requestId = $transaction.data('requestid');
-		var requests = this.model.requests();
-		var request = requests.get(requestId);
-		var transactions = request.transactions();
+
+		if ($transaction.data('requestid')) {
+			var requestId = $transaction.data('requestid');
+			var requests = this.model.requests();
+			var request = requests.get(requestId);
+			var transactions = request.transactions();
+		} else {
+			var offerId = $transaction.data('offerid');
+			var offers = this.model.offers();
+			var offer = offers.get(offerId);
+			var transactions = offer.transactions();
+		}
+		
 		var transaction = transactions.get(transactionId);
 		transaction.save({
 			status: 'Paid'
@@ -57,10 +75,12 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		var requests = Reallocate.currentUser.requests()
+		var requests = Reallocate.currentUser.requests()l
+		var offers = Reallocate.currentUser.offers();
 		var content = this.template({
 			user: this.model,
-			requests: requests
+			requests: requests,
+			offers: offers
 		});
 		this.$el.html(content);
 		this.attachSubviews();

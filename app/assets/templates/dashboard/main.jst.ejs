@@ -36,4 +36,35 @@
 		</div>
 	<% } %>
 </div>
+<div id='offers'>
+	<% for (var i = 0; i < offers.length; i++) { %>
+		<% offer = offers.at(i); %>
+		<div>
+			<h4><%= offer.escape('name') %></h4>
+			<% transactions = offer.transactions(); %>
+			<% if (transactions.length === 0) { %>
+				<p>No Transactions on this offer</p>
+			<% } else { %>
+				<% for (var j = 0; j < transactions.length; j++) { %>
+					<% transaction = transactions.at(j); %>
+					<button 
+						class='btn btn-primary transaction'
+						data-offerid='<%= offer.id %>'
+						data-transactionid='<%= transaction.id %>'>
+						<%= transaction.escape('name') %>
+					</button>
+					<p><%= transaction.escape('status') %></p>
+					<% if (transaction.get('status') === 'Accepted') { %>
+						<button
+							class='btn btn-primary transaction-pay'
+							data-offerid='<%= offer.id %>'
+							data-transactionid='<%= transaction.id %>'>
+							Pay: <%= transaction.escape('name') %>
+						</button>
+					<% } %>
+				<% } %>
+			<% } %>
+		</div>
+	<% } %>
+</div>
 <div class="modals"></div>
