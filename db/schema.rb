@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206010557) do
+ActiveRecord::Schema.define(version: 20150210184932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "offers", force: true do |t|
+    t.string   "name",                               null: false
+    t.string   "description",                        null: false
+    t.integer  "offerable_id",                       null: false
+    t.string   "offerable_type",                     null: false
+    t.string   "status",         default: "Pending", null: false
+    t.integer  "hours",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offers", ["offerable_id"], name: "index_offers_on_offerable_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name",                   null: false
