@@ -9,10 +9,21 @@ Reallocate.Models.User = Backbone.Model.extend({
 		return this._requests;
 	},
 
+	offers: function () {
+		if (!this._offers) {
+			this._offers = new Reallocate.Collections.Offers([], { user: this });
+		}
+		return this._offers;
+	},
+
 	parse: function (response) {
 		if (response.requests) {
 			this.requests().set(response.requests, { parse: true });
 			delete response.requests;
+		}
+		if (response.offers) {
+			this.offers().set(response.offers, { parse: true });
+			delete response.offers;
 		}
 		return response;
 	}
