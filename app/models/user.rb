@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :requests, as: :requestable, dependent: :destroy
+  has_many :offers, as: :offerable, dependent: :destroy
   has_many :responded_transactions, class_name: 'Transaction', as: :respondable, dependent: :destroy
   has_many :listed_transactions, through: :requests, source: :transactions
 

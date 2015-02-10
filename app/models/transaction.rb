@@ -19,7 +19,11 @@ class Transaction < ActiveRecord::Base
 
 	def pay
 		respondable.increase_hours(self.hours)
-		listable.requestable.decrease_hours(self.hours)
+		if listable.respond_to?(requestable)
+			listable.requestable.decrease_hours(self.hours)
+		else
+			listable.offerable.decrease_hours(self.hours)
+		end
 	end
 
 	def should_pay?
