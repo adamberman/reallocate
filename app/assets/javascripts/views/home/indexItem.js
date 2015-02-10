@@ -5,7 +5,8 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 	},
 
 	events: {
-		'click .request-content-main': 'hideOrUnhide',
+		'click .request-content-main': 'hideOrUnhideRequest',
+		'click .offer-content-main': 'hideOrUnhideOffer',
 		'click button.transaction': 'handleTransactionClick',
 		'hidden.bs.modal': 'removeTransactionModal'
 	},
@@ -16,9 +17,16 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	requestTemplate: JST['home/request-item'],
 
-	hideOrUnhide: function () {
+	offerTemplate: JST['home/offer-item'],
+
+	hideOrUnhideRequest: function () {
 		this.$('.request-content-expander').toggleClass('hidden-container');
 		this.$('.request-content-header').toggleClass('hidden-container');
+	},
+
+	hideOrUnhideOffer: function () {
+		this.$('.offer-content-expander').toggleClass('hidden-container');
+		this.$('.offer-content-expander').toggleClass('hidden-container');
 	},
 
 	handleTransactionClick: function (event) {
@@ -30,11 +38,13 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 		if (this.model.transaction().id) {
 			var modal = new Reallocate.Views.TransactionModal({
 				indexItem: this.model,
+				itemType: this._type,
 				model: this.model.transaction()
 			})
 		} else {
 			var modal = new Reallocate.Views.TransactionModal({
 				indexItem: this.model,
+				itemType: this._type,
 				model: new Reallocate.Models.Transaction()
 			})
 		}
@@ -50,18 +60,24 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		var template;
+		var content;
 		if (this._type === 'organization') {
-			template = this.organizationTemplate;
+			content = this.organizationTemplate({
+				item: this.model
+			});
 		}
 		if (this._type === 'request') {
-			template = this.requestTemplate;
+			content = this.requestTemplate({
+				item: this.model,
+				requestable: this.model.attributes.requestable
+			});
 		}
-
-		var content = template({
-			item: this.model,
-			requestable: this.model.attributes.requestable
-		});
+		if (this._type === 'offer') {
+			content = this.offerTemplate({
+				item: this.model,
+				offerable: this.model.attributes.offerable
+			});
+		}
 
 		this.$el.html(content);
 		this.attachSubviews();
