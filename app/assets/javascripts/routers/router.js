@@ -10,9 +10,11 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"signup": "signup",
 		"dashboard": "dashboard",
 		"requests/new": "newRequest",
+		"offers/new": "newOffer",
 		"home": "home",
 		"home/organizations": "home",
-		"home/requests": "requests"
+		"home/requests": "requests",
+		"home/offers": "offers"
 	},
 
 	// first view the site will hit
@@ -33,7 +35,7 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		this._swapView(view);
 	},
 
-	dashboard: function() {
+	dashboard: function () {
 		Reallocate.currentUser.fetch();
 		var view = new Reallocate.Views.Dashboard({
 			model: Reallocate.currentUser
@@ -41,8 +43,13 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		this._swapView(view);
 	},
 
-	newRequest: function() {
+	newRequest: function () {
 		var view = new Reallocate.Views.NewRequest();
+		this._swapView(view);
+	},
+
+	newOffer: function () {
+		var view = new Reallocate.Views.NewOffer();
 		this._swapView(view);
 	},
 
@@ -66,6 +73,18 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		var view = new Reallocate.Views.HomeMain({
 			collection: requests,
 			type: 'request'
+		});
+
+		this._swapView(view);
+	},
+
+	offers: function () {
+		var offers = new Reallocate.Collections.Offers();
+		offers.fetch();
+
+		var view = new Reallocate.Views.HomeMain({
+			collection: offers,
+			type: 'offer'
 		});
 
 		this._swapView(view);
