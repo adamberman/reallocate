@@ -14,3 +14,7 @@ json.name name
 json.requests do
 	json.array! user.requests, partial: 'api/requests/request', as: :request, show_user: false
 end
+
+json.offers do
+	json.array! user.offers, partial: 'api/offers/offer', as: :offer, show_user: false
+end
