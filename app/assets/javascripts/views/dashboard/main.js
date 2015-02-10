@@ -75,7 +75,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		var requests = Reallocate.currentUser.requests()l
+		var requests = Reallocate.currentUser.requests();
 		var offers = Reallocate.currentUser.offers();
 		var content = this.template({
 			user: this.model,

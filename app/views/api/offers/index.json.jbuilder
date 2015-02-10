@@ -1,0 +1,1 @@
+json.array! @offers, partial: 'api/offers/offer', as: :offer, show_user: true
