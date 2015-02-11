@@ -1,9 +1,12 @@
 Backbone.Searchable = Backbone.Collection.extend({
 	
-	search: function (id) {
+	search: function (params) {
+		if (params === "") {
+			return this;
+		}
 		return _(this.filter(function(model) {
-			var name = model.get('name').split('');
-			return name.indexOf(id) !== -1;
+			var name = model.get('name');
+			return new RegExp(params).test(name);
 		}));
 	}
 })
