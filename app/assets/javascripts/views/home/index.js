@@ -55,7 +55,9 @@ Reallocate.Views.HomeIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		var content = this.template();
+		var content = this.template({
+			type: this._type
+		});
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
