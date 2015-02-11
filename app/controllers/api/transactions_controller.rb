@@ -26,7 +26,7 @@ module Api
 		private
 		
 		def transaction_params
-			params.require(:transaction).permit(:listable_id, :listable_type, :hours, :status)
+			params.require(:transaction).permit(:listable_id, :listable_type, :hours, :status, :date)
 		end
 	end
 end

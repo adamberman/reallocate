@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-	validates :name, :description, :listable, :respondable, :hours, :status, :last_edited_id, presence: true
+	validates :name, :description, :listable, :respondable, :hours, :status, :last_edited_id, :hours, presence: true
 	validates :status, inclusion: { in: %w(Accepted Rejected Pending Paid),
 		message: "%{value} is not a valid status" }
 	validates( 

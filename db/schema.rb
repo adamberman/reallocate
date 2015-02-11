@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210184932) do
+ActiveRecord::Schema.define(version: 20150211185253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150210184932) do
     t.integer  "hours",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "date"
   end
 
   add_index "offers", ["offerable_id"], name: "index_offers_on_offerable_id", using: :btree
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150210184932) do
     t.datetime "updated_at"
     t.integer  "hours",                                null: false
     t.string   "status",           default: "Pending", null: false
+    t.string   "date"
   end
 
   add_index "requests", ["requestable_id"], name: "index_requests_on_requestable_id", using: :btree
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150210184932) do
     t.integer  "hours",                                null: false
     t.string   "status",           default: "Pending", null: false
     t.integer  "last_edited_id",                       null: false
+    t.string   "date"
   end
 
   create_table "users", force: true do |t|

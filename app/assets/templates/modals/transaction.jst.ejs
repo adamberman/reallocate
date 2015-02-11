@@ -6,17 +6,23 @@
       </div>
       <div class="modal-body item-content">
         <p><%= item.escape('description') %></p>
-        <p><%= item.escape('hours') %></p>
+        <p>Hours: <%= item.escape('hours') %></p>
+        <p>Completed By: <%= item.escape('date') %></p>
         <div id="transaction-edit" class="hidden-container">
           <form class="new-transaction">
             <label for="transaction-hours">
-              Think it'll take more or less than the listed number of hours? Make your revision here:
+              Hours:
             </label>
             <input 
               type="number"
               id="transaction-hours"
               name="transaction[hours]"
               value="<%= item.escape('hours') %>">
+            <input
+              class="form-control"
+              name="transaction[date]"
+              value="<%= item.escape('date') %>"
+              type="date">
               <button
                 type="button"
                 id="submit-transaction"

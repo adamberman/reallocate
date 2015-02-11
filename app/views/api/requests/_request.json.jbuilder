@@ -4,7 +4,8 @@ json.extract!(
 	:name,
 	:description,
 	:hours,
-	:status
+	:status,
+	:date
 )
 
 if show_user
@@ -15,7 +16,7 @@ if show_user
 			requestable = json.partial! request.requestable, partial: 'organization', as: :organization
 		end
 	end
-	
+
 	json.transaction do
 		if request.relevant_transaction(current_user)
 			transaction = json.partial! request.relevant_transaction(current_user), partial: 'transaction', as: :transaction

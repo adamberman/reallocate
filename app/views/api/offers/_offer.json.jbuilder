@@ -4,7 +4,8 @@ json.extract!(
 	:name,
 	:description,
 	:hours,
-	:status
+	:status,
+	:date
 )
 
 if show_user
