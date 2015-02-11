@@ -5,5 +5,6 @@ json.extract!(
 	:description,
 	:hours,
 	:status,
-	:last_edited_id
+	:last_edited_id,
+	:listable_id
 )

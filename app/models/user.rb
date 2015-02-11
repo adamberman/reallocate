@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
+  def responded_offers
+    self.responded_transactions.where('listable_type = ?', 'Offer')
+  end
+
+  def responded_requests
+    self.responded_transactions.where('listable_type = ?', 'Request')
+  end
+
   def increase_hours(hours)
     self.hours += hours
     self.save!

@@ -58,3 +58,19 @@ textarea#new-bid-info {
 	width: 80%;
 	display: inline-block;
 }
+
+.column {
+	display: inline-block;
+	float: left;
+	margin-left: 100px;
+}
+
+.dashboard-item {
+	border: 1px solid grey;
+	padding: 10px;
+	border-radius: 10%;
+}
+
+.dashboard-item:hover {
+	background-color: lightgrey;
+}

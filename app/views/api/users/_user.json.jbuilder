@@ -18,3 +18,11 @@ end
 json.offers do
 	json.array! user.offers, partial: 'api/offers/offer', as: :offer, show_user: false
 end
+
+json.respondedRequests do
+	json.array! user.responded_requests, partial: 'api/transactions/transaction', as: :transaction
+end
+
+json.respondedOffers do
+	json.array! user.responded_offers, partial: 'api/transactions/transaction', as: :transaction
+end

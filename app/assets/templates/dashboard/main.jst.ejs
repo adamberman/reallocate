@@ -5,17 +5,18 @@
 <h4>
 	You have <%= user.escape('hours') %> hours
 </h4>
-<div id='requests'>
+<div class="column" id='initialized-requests'>
+	<h4>Initialized Requests</h4>
 	<% for (var i = 0; i < requests.length; i++) { %>
-		<% request = requests.at(i); %>
-		<div>
+		<% var request = requests.at(i); %>
+		<div class='dashboard-item'>
 			<h4><%= request.escape('name') %></h4>
-			<% transactions = request.transactions(); %>
+			<% var transactions = request.transactions(); %>
 			<% if (transactions.length === 0) { %>
 				<p>No Transactions on this request</p>
 			<% } else { %>
 				<% for (var j = 0; j < transactions.length; j++) { %>
-					<% transaction = transactions.at(j); %>
+					<% var transaction = transactions.at(j); %>
 					<button 
 						class='btn btn-primary transaction'
 						data-requestid='<%= request.id %>'
@@ -36,17 +37,18 @@
 		</div>
 	<% } %>
 </div>
-<div id='offers'>
+<div class="column" id='initialized-offers'>
+	<h4>Initialized Offers</h4>
 	<% for (var i = 0; i < offers.length; i++) { %>
-		<% offer = offers.at(i); %>
-		<div>
+		<% var offer = offers.at(i); %>
+		<div class='dashboard-item'>
 			<h4><%= offer.escape('name') %></h4>
-			<% transactions = offer.transactions(); %>
+			<% var transactions = offer.transactions(); %>
 			<% if (transactions.length === 0) { %>
 				<p>No Transactions on this offer</p>
 			<% } else { %>
 				<% for (var j = 0; j < transactions.length; j++) { %>
-					<% transaction = transactions.at(j); %>
+					<% var transaction = transactions.at(j); %>
 					<button 
 						class='btn btn-primary transaction'
 						data-offerid='<%= offer.id %>'
@@ -54,16 +56,48 @@
 						<%= transaction.escape('name') %>
 					</button>
 					<p><%= transaction.escape('status') %></p>
-					<% if (transaction.get('status') === 'Accepted') { %>
-						<button
-							class='btn btn-primary transaction-pay'
-							data-offerid='<%= offer.id %>'
-							data-transactionid='<%= transaction.id %>'>
-							Pay: <%= transaction.escape('name') %>
-						</button>
-					<% } %>
 				<% } %>
 			<% } %>
+		</div>
+	<% } %>
+</div>
+<div class="column" id='responded-requests'>
+	<h4>Responded Requests</h4>
+	<% for (var i = 0; i < respondedRequests.length; i++) { %>
+		<% var transaction = respondedRequests.at(i); %>
+		<div class='dashboard-item'>
+			<h4><%= transaction.escape('name') %></h4>
+			<button 
+				class='btn btn-primary transaction'
+				data-requestid='<%= transaction.get("listable_id") %>'
+				data-transactionid='<%= transaction.id %>'>
+				<%= transaction.escape('name') %>
+			</button>
+			<p><%= transaction.escape('status') %></p>
+			<% if (transaction.get('status') === 'Accepted') { %>
+				<button
+					class='btn btn-primary transaction-pay'
+					data-requestid='<%= transaction.get("listable_id") %>'
+					data-transactionid='<%= transaction.id %>'>
+					Pay: <%= transaction.escape('name') %>
+				</button>
+			<% } %>
+		</div>
+	<% } %>
+</div>
+<div class="column" id='initialized-offers'>
+	<h4>Responded Offers</h4>
+	<% for (var i = 0; i < respondedOffers.length; i++) { %>
+		<% transaction = respondedOffers.at(i); %>
+		<div class='dashboard-item'>
+			<h4><%= transaction.escape('name') %></h4>
+			<button 
+				class='btn btn-primary transaction'
+				data-offerid='<%= transaction.get("listable_id") %>'
+				data-transactionid='<%= transaction.id %>'>
+				<%= transaction.escape('name') %>
+			</button>
+			<p><%= transaction.escape('status') %></p>
 		</div>
 	<% } %>
 </div>
