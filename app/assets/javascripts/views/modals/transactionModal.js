@@ -22,7 +22,7 @@ Reallocate.Views.TransactionModal = Backbone.View.extend({
 		var params = $('form.new-transaction').serializeJSON();
 		params.transaction.hours = parseInt(params.transaction.hours);
 		if (this.indexItem) {
-			params.transaction.listable_type = 'itemType';
+			params.transaction.listable_type = this.itemType;
 			params.transaction.listable_id = this.indexItem.id;
 		}
 		this.model.set(params);
