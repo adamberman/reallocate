@@ -4,6 +4,8 @@ class Request < ActiveRecord::Base
 		message: "%{value} is not a valid status" }
 
 	has_many :transactions, as: :listable, dependent: :destroy
+	has_many :listable_tasks, as: :taskable
+	has_many :tasks, through: :listable_tasks, source: :task
 
 	belongs_to :requestable, polymorphic: true
 

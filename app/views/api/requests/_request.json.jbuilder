@@ -27,3 +27,5 @@ else
 		json.array! request.transactions, partial: 'api/transactions/transaction', as: :transaction
 	end
 end
+
+json.tags request.tasks

@@ -9,3 +9,5 @@ json.extract!(
 	:listable_id,
 	:date
 )
+
+json.tags request.tasks

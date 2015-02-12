@@ -12,6 +12,9 @@ class Transaction < ActiveRecord::Base
 		}
 	)
 
+	has_many :listable_tasks, as: :taskable
+	has_many :tasks, through: :listable_tasks, source: :task
+
 	belongs_to :listable, polymorphic: true
 	belongs_to :respondable, polymorphic: true
 

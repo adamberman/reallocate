@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211185253) do
+ActiveRecord::Schema.define(version: 20150212030905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listable_tasks", force: true do |t|
+    t.integer  "task_id",       null: false
+    t.integer  "taskable_id",   null: false
+    t.integer  "taskable_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listable_tasks", ["task_id"], name: "index_listable_tasks_on_task_id", using: :btree
+  add_index "listable_tasks", ["taskable_id"], name: "index_listable_tasks_on_taskable_id", using: :btree
 
   create_table "offers", force: true do |t|
     t.string   "name",                               null: false
@@ -53,6 +64,12 @@ ActiveRecord::Schema.define(version: 20150211185253) do
   end
 
   add_index "requests", ["requestable_id"], name: "index_requests_on_requestable_id", using: :btree
+
+  create_table "tasks", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "transactions", force: true do |t|
     t.string   "name",                                 null: false
