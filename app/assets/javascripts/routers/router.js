@@ -11,8 +11,8 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		"dashboard": "dashboard",
 		"requests/new": "newRequest",
 		"offers/new": "newOffer",
-		"home": "home",
-		"home/organizations": "home",
+		"home": "requests",
+		"home/organizations": "organizations",
 		"home/requests": "requests",
 		"home/offers": "offers"
 	},
@@ -54,12 +54,16 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	},
 
 	// home page, which is also the search page for organizations, tasks, etc. For now, anyone can do everything, but eventually only logged in users will be able to do some things
-	home: function () {
+	organizations: function () {
 		var organizations = new Reallocate.Collections.Organizations();
 		organizations.fetch()
 
+		var tags = new Reallocate.Collections.Tags();
+		tags.fetch()
+
 		var view = new Reallocate.Views.HomeMain({
 			collection: organizations,
+			tags: tags,
 			type: 'Organization'
 		});
 
@@ -70,8 +74,12 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		var requests = new Reallocate.Collections.Requests();
 		requests.fetch();
 
+		var tags = new Reallocate.Collections.Tags();
+		tags.fetch()
+
 		var view = new Reallocate.Views.HomeMain({
 			collection: requests,
+			tags: tags,
 			type: 'Request'
 		});
 
@@ -82,8 +90,12 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 		var offers = new Reallocate.Collections.Offers();
 		offers.fetch();
 
+		var tags = new Reallocate.Collections.Tags();
+		tags.fetch()
+
 		var view = new Reallocate.Views.HomeMain({
 			collection: offers,
+			tags: tags,
 			type: 'Offer'
 		});
 

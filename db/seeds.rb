@@ -24,3 +24,8 @@
 
 # 	Request.first.transactions.create!(respondable_id: 1, respondable_type: 'User')
 # end
+
+ActiveRecord::Base.transaction do
+	Task.create!(name: "whatever the name is")
+	# ...
+end

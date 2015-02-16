@@ -4,5 +4,10 @@ module Api
 			@task = Task.find(params[:id])
       render :show
 		end
+
+		def index
+			@tasks = Task.all
+			render :index
+		end
 	end
 end
