@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:create, :index]
     resources :offers, only: [:create, :index]
     resources :transactions, only: [:create, :update]
+    resources :tasks, only: [:show, :index]
     resource :session, only: [:create, :destroy]
   end
 end

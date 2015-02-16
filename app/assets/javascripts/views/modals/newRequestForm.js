@@ -1,5 +1,9 @@
 Reallocate.Views.NewRequest = Backbone.View.extend({
 
+	initialize: function () {
+		this.addNavbar();
+	},
+
 	events: { 
 		"submit #new-request-form": "createNewRequest"
 	},
@@ -7,6 +11,11 @@ Reallocate.Views.NewRequest = Backbone.View.extend({
 	template: JST['modals/new-request'],
 
 	className: 'new-request-wrapper',
+
+	addNavbar: function () {
+		var navbar = new Reallocate.Views.Navbar();
+		this.addSubview('#navbar', navbar)
+	},
 
 	createNewRequest: function (event) {
 		event.preventDefault();

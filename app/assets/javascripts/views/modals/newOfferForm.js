@@ -1,5 +1,9 @@
 Reallocate.Views.NewOffer = Backbone.View.extend({
 
+	initialize: function () {
+		this.addNavbar();
+	},
+
 	events: { 
 		"submit #new-offer-form": "createNewOffer"
 	},
@@ -7,6 +11,11 @@ Reallocate.Views.NewOffer = Backbone.View.extend({
 	template: JST['modals/new-offer'],
 
 	className: 'new-offer-wrapper',
+
+	addNavbar: function () {
+		var navbar = new Reallocate.Views.Navbar();
+		this.addSubview('#navbar', navbar)
+	},
 
 	createNewOffer: function (event) {
 		event.preventDefault();
