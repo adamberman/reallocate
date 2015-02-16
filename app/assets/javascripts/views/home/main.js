@@ -28,7 +28,8 @@ Reallocate.Views.HomeMain = Backbone.CompositeView.extend({
 
 	addSearch: function () {
 		var search = new Reallocate.Views.HomeSearch({
-			collection: this.collection
+			collection: this.collection,
+			tags: this.tags
 		});
 		this.addSubview('#search', search);
 	},
