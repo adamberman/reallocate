@@ -4,3 +4,17 @@
 <input
 	type="text"
 	id="search">
+<label for="tag">
+	Tag:
+</label>
+<select id="tag">
+	<option value="">
+		None
+	</option>
+	<% tags.forEach(function (tag) { %>
+		<option 
+			value="<%= tag.escape('name') %>">
+			<%= tag.escape('name') %>
+		</option>
+	<% }) %>
+</select>
