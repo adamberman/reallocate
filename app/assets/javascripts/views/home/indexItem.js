@@ -2,6 +2,7 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
 		this._type = options.type;
+		this._openModal = false;
 	},
 
 	events: {
@@ -31,7 +32,10 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	handleTransactionClick: function (event) {
 		event.preventDefault();
-		this.addTransactionModal();
+		if (!this._openModal) {
+			this.addTransactionModal();
+			this._openModal = true;
+		}
 	},
 
 	addTransactionModal: function () {
@@ -57,6 +61,7 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 			return subview.el === event.target
 		})
 		this.removeSubview('.modals', subview);
+		this._openModal = false;
 	},
 
 	render: function () {
