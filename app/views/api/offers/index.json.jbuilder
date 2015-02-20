@@ -1,1 +1,1 @@
-json.array! @offers, partial: 'api/offers/offer', as: :offer, show_user: true
+json.array! @offers, partial: 'api/offers/offer', as: :offer, show_user: true, show_tasks: true

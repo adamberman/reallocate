@@ -10,4 +10,6 @@ json.extract!(
 	:date
 )
 
-json.tags request.tasks
+if show_tasks
+	json.tags transaction.tasks
+end

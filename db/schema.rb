@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212030905) do
+ActiveRecord::Schema.define(version: 20150220051147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150212030905) do
   create_table "listable_tasks", force: true do |t|
     t.integer  "task_id",       null: false
     t.integer  "taskable_id",   null: false
-    t.integer  "taskable_type", null: false
+    t.string   "taskable_type", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

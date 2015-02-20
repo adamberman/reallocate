@@ -28,4 +28,6 @@ else
 	end
 end
 
-json.tags request.tasks
+if show_tasks
+	json.tags offer.tasks
+end

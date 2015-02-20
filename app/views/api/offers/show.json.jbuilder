@@ -1,1 +1,1 @@
-json.partial! 'api/offers/offer', offer: @offer, show_user: true
+json.partial! 'api/offers/offer', offer: @offer, show_user: true, show_tasks: true
