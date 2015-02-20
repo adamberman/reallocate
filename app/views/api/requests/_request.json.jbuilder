@@ -29,5 +29,7 @@ else
 end
 
 if show_tasks
-	json.tags request.tasks, show_taskable: false
+	json.tags do
+		json.array! request.tasks, partial: 'api/tasks/task', as: :task, show_taskable: false
+	end
 end
