@@ -1,1 +1,1 @@
-json.array! @tasks, partial: 'task', as: :task
+json.array! @tasks, partial: 'task', as: :task, show_taskable: false

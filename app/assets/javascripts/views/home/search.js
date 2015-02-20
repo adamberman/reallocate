@@ -2,6 +2,7 @@ Reallocate.Views.HomeSearch = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.tags = options.tags;
+		this.listenTo(this.tags, 'sync', this.render);
 	},
 
 	className: 'search-wrapper',

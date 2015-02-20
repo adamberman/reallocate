@@ -11,5 +11,5 @@ json.extract!(
 )
 
 if show_tasks
-	json.tags transaction.tasks
+	json.tags transaction.tasks, show_taskable: false
 end

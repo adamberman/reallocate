@@ -1,5 +1,5 @@
 module Api
-	class OffersController < ApplicationController
+	class TasksController < ApplicationController
 		def show
 			@task = Task.find(params[:id])
       render :show
