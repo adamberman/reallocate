@@ -11,5 +11,7 @@ json.extract!(
 )
 
 if show_tasks
-	json.tags transaction.tasks, show_taskable: false
+	json.tags do
+		json.array! transaction.tasks, partial: 'api/tasks/task', as: :task, show_taskable: false
+	end
 end
