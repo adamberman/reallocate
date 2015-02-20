@@ -23,7 +23,7 @@ Reallocate.Views.Dashboard = Backbone.CompositeView.extend({
 
 	viewTransaction: function (event) {
 		event.preventDefault();
-		if (!_openModal) {
+		if (!this._openModal) {
 			var $transaction = $(event.currentTarget);
 			var transactionId = $transaction.data('transactionid');
 			
