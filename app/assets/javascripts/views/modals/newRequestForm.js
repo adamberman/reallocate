@@ -6,10 +6,13 @@ Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 	},
 
 	events: { 
-		"submit #new-request-form": "createNewRequest"
+		"submit #new-request-form": "createNewRequest",		
+		"click button#new-tag-button": 'addTagForm'
 	},
 
 	template: JST['modals/new-request'],
+
+	tagForm: JST['layouts/tag-form'],
 
 	className: 'new-request-wrapper',
 
@@ -32,6 +35,14 @@ Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 				alert('error');
 			}
 		});
+	},
+
+	addTagForm: function (event) {
+		event.preventDefault();
+		var content = this.tagForm({
+			tags: this.tags
+		})
+		this.$('#tags').append(content);
 	},
 
 	render: function () {
