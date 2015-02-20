@@ -1,4 +1,4 @@
-Reallocate.Views.NewOffer = Backbone.View.extend({
+Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 
 	initialize: function () {
 		this.addNavbar();
@@ -36,6 +36,7 @@ Reallocate.Views.NewOffer = Backbone.View.extend({
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
+		this.attachSubviews();
 		return this;
 	}
 })
