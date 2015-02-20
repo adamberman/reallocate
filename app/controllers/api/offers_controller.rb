@@ -21,7 +21,7 @@ module Api
 		private
 		
 		def offer_params
-			params.require(:offer).permit(:name, :description, :hours, :date)
+			params.require(:offer).permit(:name, :description, :hours, :date, :tags)
 		end
 	end
 end
