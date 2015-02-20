@@ -3,14 +3,16 @@ Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 	initialize: function (options) {
 		this.addNavbar();
 		this.tags = options.tags;
-		this.listenTo(this.tags, 'sync', this.render);
 	},
 
 	events: { 
-		"submit #new-offer-form": "createNewOffer"
+		"submit #new-offer-form": "createNewOffer",
+		"click button#new-tag-button": 'addTagForm'
 	},
 
 	template: JST['modals/new-offer'],
+
+	tagForm: JST['layouts/tag-form'],
 
 	className: 'new-offer-wrapper',
 
@@ -35,10 +37,16 @@ Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 		});
 	},
 
-	render: function () {
-		var content = this.template({
+	addTagForm: function (event) {
+		event.preventDefault();
+		var content = this.tagForm({
 			tags: this.tags
-		});
+		})
+		this.$('#tags').append(content);
+	},
+
+	render: function () {
+		var content = this.template();
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
