@@ -36,7 +36,9 @@ Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		var content = this.template();
+		var content = this.template({
+			tags: this.tags
+		});
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
