@@ -1,7 +1,9 @@
 Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 
-	initialize: function () {
+	initialize: function (options) {
 		this.addNavbar();
+		this.tags = options.tags;
+		this.listenTo(this.tags, 'sync', this.render);
 	},
 
 	events: { 

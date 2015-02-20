@@ -1,7 +1,9 @@
 Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 
-	initialize: function () {
-		this.addNavbar();
+	initialize: function (options) {
+		this.addNavbar();		
+		this.tags = options.tags;
+		this.listenTo(this.tags, 'sync', this.render);
 	},
 
 	events: { 
