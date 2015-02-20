@@ -125,5 +125,5 @@ ActiveRecord::Base.transaction do
   Task.create!(name: "Fitness & Exercise")
   Task.create!(name: "Medical Services")
   Task.create!(name: "Miscellaneous")
-  Task.create!(name: "Yoga / Meditation
+  Task.create!(name: "Yoga / Meditation")
 end
