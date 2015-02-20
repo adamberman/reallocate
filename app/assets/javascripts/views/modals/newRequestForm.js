@@ -31,7 +31,7 @@ Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 				tags.push($tags.eq(tag).val());
 			}
 		})
-		offerParams.offer.tags = tags;
+		requestParams.request.tags = tags;
 		var that = this;
 		var request = new Reallocate.Models.Request(requestParams);
 
