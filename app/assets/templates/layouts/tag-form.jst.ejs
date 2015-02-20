@@ -1,0 +1,11 @@
+<select id="tag">
+	<option value="">
+		None
+	</option>
+	<% tags.forEach(function (tag) { %>
+		<option 
+			value="<%= tag.id %>">
+			<%= tag.escape('name') %>
+		</option>
+	<% }) %>
+</select>
