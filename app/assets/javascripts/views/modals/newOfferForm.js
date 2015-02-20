@@ -25,9 +25,9 @@ Reallocate.Views.NewOffer = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var offerParams = $(event.target).serializeJSON();
 		var tags = [];
-		var $tags = $('#tags');
+		var $tags = $('#tags').children();
 		$tags.each(function (tag) {
-			if ($tags[tag].val() !== "") {
+			if ($tags.eq(tag).val() !== "") {
 				tags.push($tags[tag].val());
 			}
 		})
