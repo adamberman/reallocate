@@ -44,12 +44,20 @@ Reallocate.Routers.Router = Backbone.Router.extend({
 	},
 
 	newRequest: function () {
-		var view = new Reallocate.Views.NewRequest();
+		var tags = new Reallocate.Collections.Tags();
+		tags.fetch()
+		var view = new Reallocate.Views.NewRequest({
+			tags: tags
+		});
 		this._swapView(view);
 	},
 
 	newOffer: function () {
-		var view = new Reallocate.Views.NewOffer();
+		var tags = new Reallocate.Collections.Tags();
+		tags.fetch()
+		var view = new Reallocate.Views.NewOffer({
+			tags: tags
+		});
 		this._swapView(view);
 	},
 
