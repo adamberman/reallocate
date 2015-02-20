@@ -25,7 +25,7 @@ Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var requestParams = $(event.target).serializeJSON();
 		var tags = [];
-		var $tags = $('#tags');
+		var $tags = $('#tags').children();
 		$tags.each(function (tag) {
 			if ($tags[tag].val() !== "") {
 				tags.push($tags[tag].val());
