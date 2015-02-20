@@ -24,6 +24,14 @@ Reallocate.Views.NewRequest = Backbone.CompositeView.extend({
 	createNewRequest: function (event) {
 		event.preventDefault();
 		var requestParams = $(event.target).serializeJSON();
+		var tags = [];
+		var $tags = $('#tags');
+		$tags.each(function (tag) {
+			if ($tags[tag].val() !== "") {
+				tags.push($tags[tag].val());
+			}
+		})
+		offerParams.offer.tags = tags;
 		var that = this;
 		var request = new Reallocate.Models.Request(requestParams);
 
