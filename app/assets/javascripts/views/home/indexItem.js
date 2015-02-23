@@ -66,6 +66,11 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 
 	render: function () {
 		var content;
+		var tags = [];
+		this.model.get('tags').forEach(function (tag) {
+			tags.push(tag.name);
+		});
+
 		if (this._type === 'Organization') {
 			content = this.organizationTemplate({
 				item: this.model
@@ -74,13 +79,15 @@ Reallocate.Views.IndexItem = Backbone.CompositeView.extend({
 		if (this._type === 'Request') {
 			content = this.requestTemplate({
 				item: this.model,
-				requestable: this.model.attributes.requestable
+				requestable: this.model.attributes.requestable,
+				tags: tags.join(', ')
 			});
 		}
 		if (this._type === 'Offer') {
 			content = this.offerTemplate({
 				item: this.model,
-				offerable: this.model.attributes.offerable
+				offerable: this.model.attributes.offerable,
+				tags: tags.join(', ')
 			});
 		}
 
