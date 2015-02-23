@@ -9,16 +9,7 @@ class Offer < ActiveRecord::Base
 
 	belongs_to :offerable, polymorphic: true
 
-	attr_reader :tags
-
 	def relevant_transaction(user)
 		self.transactions.where('respondable_id = ?', user.id).first
-	end
-
-	def tags=(tags)
-		@tags = tags
-		@tags.each do |i|
-			self.listable_tasks.create!(task_id: i.to_i)
-		end
 	end
 end
