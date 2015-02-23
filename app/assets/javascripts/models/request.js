@@ -17,7 +17,6 @@ Reallocate.Models.Request = Backbone.Model.extend({
 	},
 
 	parse: function (response) {
-		debugger;
 		if (response.transaction) {
 			this.transaction().set(response.transaction, { parse: true });
 			delete response.transaction;

@@ -7,6 +7,9 @@ module Api
 			@request.status = 'Pending'
 
 			if @request.save
+				params["request"]["tags"].each do |i|
+					@request.listable_tasks.create!(task_id: i.to_i)
+				end
 				render :show, status: :created
 			else
 				render json: @request.errors.full_messages, status: :unprocessable_entity
