@@ -14,21 +14,21 @@ Backbone.Searchable = Backbone.Collection.extend({
 
 		if (params.name === "") {
 			return _(this.filter(function (model) {
-				return model.get('tags').any(function (tag) {
-					return params.tag === tag.escape('name');
+				return _(model.get('tags')).any(function (tag) {
+					return params.tag === tag.name;
 				})
 			}))
 		}
 
 		var filtered = _(this.filter(function (model) {
-			return model.get('tags').any(function (tag) {
-				return params.tag === tag.escape('name');
+			return _(model.get('tags')).any(function (tag) {
+				return params.tag === tag.name;
 			})
 		}))
 
 		return _(filtered.filter(function (model) {
-			return model.get('tags').any(function (tag) {
-				return params.tag === tag.escape('name');
+			return _(model.get('tags')).any(function (tag) {
+				return params.tag === tag.name;
 			})
 		}))
 	}
