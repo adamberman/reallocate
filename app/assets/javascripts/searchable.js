@@ -8,7 +8,7 @@ Backbone.Searchable = Backbone.Collection.extend({
 		if (params.tag === "") {
 			return _(this.filter(function (model) {
 				var name = model.get('name').toLowerCase();
-				return new RegExp(params.toLowerCase()).test(name);
+				return new RegExp(params.name.toLowerCase()).test(name);
 			}));
 		}
 
@@ -27,9 +27,8 @@ Backbone.Searchable = Backbone.Collection.extend({
 		}))
 
 		return _(filtered.filter(function (model) {
-			return _(model.get('tags')).any(function (tag) {
-				return params.tag === tag.name;
-			})
+			var name = model.get('name').toLowerCase();
+			return new RegExp(params.name.toLowerCase()).test(name);
 		}))
 	}
 })
