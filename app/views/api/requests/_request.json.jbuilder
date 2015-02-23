@@ -11,9 +11,9 @@ json.extract!(
 if show_user
 	json.requestable do
 		if request.requestable_type === 'User'
-			requestable = json.partial! request.requestable, partial: 'user', as: :user
+			requestable = json.partial! request.requestable, partial: 'user', as: :user, from_listable: true
 		else
-			requestable = json.partial! request.requestable, partial: 'organization', as: :organization
+			requestable = json.partial! request.requestable, partial: 'organization', as: :organization, from_listable: true
 		end
 	end
 

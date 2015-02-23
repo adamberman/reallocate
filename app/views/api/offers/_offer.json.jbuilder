@@ -11,9 +11,9 @@ json.extract!(
 if show_user
 	json.offerable do
 		if offer.offerable_type === 'User'
-			offerable = json.partial! offer.offerable, partial: 'user', as: :user
+			offerable = json.partial! offer.offerable, partial: 'user', as: :user, from_listable: true
 		else
-			offerable = json.partial! offer.offerable, partial: 'organization', as: :organization
+			offerable = json.partial! offer.offerable, partial: 'organization', as: :organization, from_listable: true
 		end
 	end
 	
