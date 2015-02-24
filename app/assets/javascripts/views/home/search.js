@@ -10,12 +10,12 @@ Reallocate.Views.HomeSearch = Backbone.View.extend({
 	template: JST['home/search'],
 
 	events: {
-		'keydown #search': 'search',
+		'keydown #search-box': 'search',
 		'change #tag': 'search'
 	},
 
 	search: function (event) {
-		var name = $(event.currentTarget).val();
+		var name = $('#search-box').val();
 		var tag = $('#tag').val();
 		var params = {
 			name: name,
